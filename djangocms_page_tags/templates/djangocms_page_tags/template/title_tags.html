@@ -1,0 +1,7 @@
+{% load i18n %}
+{% if tags_list %}
+<div class="title_tags">
+    {% trans "Title tags:"%}
+    <ul>{% for tag in tags_list %}<li>{{ tag }}</li>{% endfor %}</ul>
+</div>
+{% endif %}

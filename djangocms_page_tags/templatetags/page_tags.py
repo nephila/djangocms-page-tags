@@ -1,0 +1,70 @@
+# -*- coding: utf-8 -*-
+from django.utils.translation import ugettext_lazy as _
+from classytags.arguments import Argument, MultiValueArgument
+from classytags.core import Options, Tag
+from classytags.helpers import InclusionTag, AsTag
+from django import template
+
+from ..utils import get_page_tags_from_request
+
+register = template.Library()
+
+
+class IncludePageTagsList(InclusionTag):
+    template = 'djangocms_page_tags/page_tags.html'
+    name = 'include_page_tags'
+    title = False
+
+    options = Options(
+        Argument('page_lookup'),
+        Argument('lang', required=False, default=None),
+        Argument('site', required=False, default=None),
+    )
+
+    def get_context(self, context, page_lookup, lang, site):
+        request = context.get('request', False)
+        if not request:
+            return {'tags_list': ''}
+        if request.current_page == "dummy":
+            return {'tags_list': ''}
+        tags_list = get_page_tags_from_request(request, page_lookup, lang, site,
+                                               self.title)
+        if tags_list:
+            return {'tags_list': tags_list}
+        return {'tags_list': ''}
+register.tag(IncludePageTagsList)
+
+
+class IncludeTitleTagsList(IncludePageTagsList):
+    template = 'djangocms_page_tags/title_tags.html'
+    name = 'include_title_tags'
+    title = True
+register.tag(IncludeTitleTagsList)
+
+
+class PageTagsList(AsTag):
+    name = 'page_tags'
+
+    options = Options(
+        Argument('page_lookup'),
+        Argument('lang', required=False, default=None),
+        Argument('site', required=False, default=None),
+        'as',
+        Argument('varname', required=True, resolve=False)
+    )
+
+    def get_value(self, context, page_lookup, lang, site):
+        request = context.get('request', False)
+        if not request:
+            return ''
+        if request.current_page == "dummy":
+            return ''
+        return get_page_tags_from_request(request, page_lookup, lang, site,
+                                          self.title)
+register.tag(PageTagsList)
+
+
+class TitleTagsList(PageTagsList):
+    name = 'title_tags'
+    title = True
+register.tag(TitleTagsList)

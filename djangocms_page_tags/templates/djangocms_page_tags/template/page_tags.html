@@ -1,0 +1,7 @@
+{% load i18n %}
+{% if tags_list %}
+<div class="page_tags">
+    {% trans "Page tags:"%}
+    <ul>{% for tag in tags_list %}<li>{{ tag }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
