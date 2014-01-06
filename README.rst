@@ -64,3 +64,9 @@ Templatetags
 * ``include_title_tags``
 * ``page_tags``
 * ``title_tags``
+
+
+.. image:: https://d2weczhvl823v0.cloudfront.net/nephila/djangocms-page-tags/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
