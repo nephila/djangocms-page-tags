@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to djangocms-page-tags's documentation!
-=================================================================
+===============================================
 
 Contents:
 
@@ -14,6 +14,14 @@ Contents:
    readme
    installation
    usage
+   autodoc.rst
    contributing
    authors
    history
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

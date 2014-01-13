@@ -9,7 +9,7 @@ djangocms-page-tags
         :target: https://travis-ci.org/nephila/djangocms-page-tags
 
 .. image:: https://pypip.in/d/djangocms-page-tags/badge.png
-        :target: https://crate.io/packages/djangocms-page-tags?version=latest
+        :target: https://pypi.python.org/pypi/djangocms-page-tags?version=latest
 
 .. image:: https://coveralls.io/repos/nephila/djangocms-page-tags/badge.png?branch=master
         :target: https://coveralls.io/r/nephila/djangocms-page-tags?branch=master
