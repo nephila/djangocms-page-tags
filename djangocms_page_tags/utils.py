@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-from cms.templatetags.cms_tags import _get_cache_key, _get_page_by_untyped_arg
-from cms.utils import get_language_from_request, get_cms_setting, get_site_id
-from django.core.cache import cache
-
-from .models import PageTags, TitleTags
 
 
 def get_page_tags(page):
@@ -12,8 +7,10 @@ def get_page_tags(page):
 
     :param page: a Page instance
 
-    :return list or queryset of attached tags
+    :return: list or queryset of attached tags
+    :type: List
     """
+    from .models import PageTags
     try:
         return page.pagetags.tags.all()
     except PageTags.DoesNotExist:
@@ -27,9 +24,10 @@ def page_has_tag(page, tag):
     :param page: a Page instance
     :param tag: a Tag instance or a slug string.
 
-    :return boolean: whether the Page instance has the given tag attached
-    (False if no Page or no attached PageTags exists)
+    :return: whether the Page instance has the given tag attached (False if no Page or no attached PageTags exists)
+    :type: Boolean
     """
+    from .models import PageTags
     if hasattr(tag, 'slug'):
         slug = tag.slug
     else:
@@ -45,12 +43,13 @@ def get_title_tags(page, lang):
     Retrieves all the tags for a Title (given as page and language).
     This function does not use fallbacks to retrieve title object.
 
-
     :param page: a Page instance
     :param lang: a language code
 
-    :return list or queryset of attached tags
+    :return: list or queryset of attached tags
+    :type: List
     """
+    from .models import TitleTags
     try:
         return page.get_title_obj(language=lang, fallback=False).titletags.tags.all()
     except TitleTags.DoesNotExist:
@@ -66,9 +65,10 @@ def title_has_tag(page, lang, tag):
     :param lang: a language code
     :param tag: a Tag instance or a slug string.
 
-    :return boolean: whether the Title instance has the given tag attached
-    (False if no Title or no attached TitleTags exists)
+    :return: whether the Title instance has the given tag attached (False if no Title or no attached TitleTags exists)
+    :type: Boolean
     """
+    from .models import TitleTags
     if hasattr(tag, 'slug'):
         slug = tag.slug
     else:
@@ -90,8 +90,13 @@ def get_page_tags_from_request(request, page_lookup, lang, site, title=False):
     :param site: a site id
     :param title: a boolean to extract the Page (if False) or Title instance
 
-    :return list of tags
+    :return: list of tags
+    :type: List
     """
+    from cms.templatetags.cms_tags import _get_cache_key, _get_page_by_untyped_arg
+    from cms.utils import get_language_from_request, get_cms_setting, get_site_id
+    from django.core.cache import cache
+
     site_id = get_site_id(site)
     if lang is None:
         lang = get_language_from_request(request)
@@ -123,6 +128,7 @@ def get_title_tags_from_request(request, page_lookup, lang, site):
     :param lang: a language code
     :param site: a site id
 
-    :return list of tags attached to the given Title
+    :return: list of tags attached to the given Title
+    :type: List
     """
     return get_page_tags_from_request(request, page_lookup, lang, site, True)

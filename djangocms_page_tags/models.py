@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
 from taggit_autosuggest.managers import TaggableManager
 from cms.extensions import PageExtension, TitleExtension
 from cms.extensions.extension_pool import extension_pool
