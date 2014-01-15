@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+from cms.views import details
 from django.contrib.auth.models import AnonymousUser
 from django.utils.translation import ugettext_lazy as _
 from taggit.models import Tag
-from cms.views import details
+
 from djangocms_page_tags.models import PageTags, TitleTags
 from tests import BaseTest
 
@@ -10,6 +11,9 @@ from tests import BaseTest
 class TemplateTagsTest(BaseTest):
 
     def test_page_tags(self):
+        """
+        Test page-level templatetags
+        """
         page1, page2 = self.get_pages()
         page_ext = PageTags.objects.create(extended_object=page1)
         page_ext.tags.add("pagetag.1", "pagetag.2")
@@ -23,6 +27,9 @@ class TemplateTagsTest(BaseTest):
         self.assertEqual(set(response.context_data['ttags_list']), set())
 
     def test_title_tags(self):
+        """
+        Test title-level templatetags
+        """
         page1, page2 = self.get_pages()
         title_ext = TitleTags.objects.create(extended_object=page1.get_title_obj('en'))
         title_ext.tags.add("titletag.1", "titletag.2")

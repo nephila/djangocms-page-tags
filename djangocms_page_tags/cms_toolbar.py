@@ -12,6 +12,9 @@ from cms.toolbar_base import CMSToolbar
 from .models import PageTags, TitleTags
 
 
+PAGE_TAGS_MENU_TITLE = _('Page tags (global)')
+TITLE_TAGS_MENU_TITLE = _('Title tags (per language)')
+
 @toolbar_pool.register
 class PageTagsToolbar(CMSToolbar):
     def populate(self):
@@ -50,18 +53,18 @@ class PageTagsToolbar(CMSToolbar):
                 # not in urls
                 pass
             else:
-                current_page_menu.add_modal_item(_('Page tags (global)'),
+                current_page_menu.add_modal_item(PAGE_TAGS_MENU_TITLE,
                                                  url=url, disabled=not_edit_mode,
                                                  position=advanced)
             # Title tags
             try:
-                page_extension = TitleTags.objects.get(extended_object_id=self.page.id)
+                title_extension = TitleTags.objects.get(extended_object_id=self.page.id)
             except TitleTags.DoesNotExist:
-                page_extension = None
+                title_extension = None
             try:
-                if page_extension:
+                if title_extension:
                     url = reverse('admin:djangocms_page_tags_titletags_change',
-                                  args=(page_extension.pk,))
+                                  args=(title_extension.pk,))
                 else:
                     url = "%s?extended_object=%s" % (
                         reverse('admin:djangocms_page_tags_titletags_add'),
@@ -70,6 +73,6 @@ class PageTagsToolbar(CMSToolbar):
                 # not in urls
                 pass
             else:
-                current_page_menu.add_modal_item(_('Title tags (per language)'),
+                current_page_menu.add_modal_item(TITLE_TAGS_MENU_TITLE,
                                                  url=url, disabled=not_edit_mode,
                                                  position=advanced)
