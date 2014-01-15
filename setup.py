@@ -6,10 +6,7 @@ import sys
 
 import djangocms_page_tags
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 version = djangocms_page_tags.__version__
 
@@ -35,7 +32,15 @@ setup(
         'djangocms_page_tags',
     ],
     include_package_data=True,
-    install_requires=open(os.path.join(os.path.dirname(__file__), 'requirements.txt')).readlines(),
+    install_requires=(
+	'django-cms>=3.0',
+        'django-taggit>=0.11.2',
+        'django-taggit-autosuggest',
+        'django-classy-tags>=0.3.4.1',
+    ),
+    dependency_links= (
+        'git+https://github.com/divio/django-cms.git@develop#egg=django-cms-3.0',
+    ),
     license="BSD",
     zip_safe=False,
     keywords='djangocms-page-tags',
