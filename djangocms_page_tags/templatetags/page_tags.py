@@ -11,7 +11,7 @@ register = template.Library()
 
 
 class IncludePageTagsList(InclusionTag):
-    template = 'djangocms_page_tags/page_tags.html'
+    template = 'djangocms_page_tags/templatetags/page_tags.html'
     name = 'include_page_tags'
     title = False
 
@@ -25,8 +25,6 @@ class IncludePageTagsList(InclusionTag):
         request = context.get('request', False)
         if not request:
             return {'tags_list': ''}
-        if request.current_page == "dummy":
-            return {'tags_list': ''}
         tags_list = get_page_tags_from_request(request, page_lookup, lang, site,
                                                self.title)
         if tags_list:
@@ -36,7 +34,7 @@ register.tag(IncludePageTagsList)
 
 
 class IncludeTitleTagsList(IncludePageTagsList):
-    template = 'djangocms_page_tags/title_tags.html'
+    template = 'djangocms_page_tags/templatetags/title_tags.html'
     name = 'include_title_tags'
     title = True
 register.tag(IncludeTitleTagsList)
@@ -44,6 +42,7 @@ register.tag(IncludeTitleTagsList)
 
 class PageTagsList(AsTag):
     name = 'page_tags'
+    title = False
 
     options = Options(
         Argument('page_lookup'),
@@ -56,8 +55,6 @@ class PageTagsList(AsTag):
     def get_value(self, context, page_lookup, lang, site):
         request = context.get('request', False)
         if not request:
-            return ''
-        if request.current_page == "dummy":
             return ''
         return get_page_tags_from_request(request, page_lookup, lang, site,
                                           self.title)
