@@ -38,19 +38,24 @@ Tags are available in the context variable ``tags_list``.
 * ``language`` (optional)
 * ``site`` (optional)
 
+For performance reason is advisable to always use a Page object as
+``page_lookup`` parameter.
 
 page_tags and title_tags
 ========================
 
-These templatetags pulls the tags for the given object and return them
-in the context for using in the template. The list can also be saved as a
-context variable for later use.
+These templatetags pulls the tags for the given object and save them in
+the ``varname`` context variable.
 
 **Arguments:**
 
 * ``page_lookup`` (see `page_lookup`_ for more information)
 * ``language`` (optional)
 * ``site`` (optional)
+* ``varname`` (required)
+
+For performance reason is advisable to always use a Page object as
+``page_lookup`` parameter.
 
 
 .. _page_lookup: http://django-cms.readthedocs.org/en/latest/advanced/templatetags.html#page-lookup
