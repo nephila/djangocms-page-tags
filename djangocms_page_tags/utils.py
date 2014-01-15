@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-from cms.models import Page
-
-
 def get_cache_key(request, page, lang, site_id, title):
     """
     Create the cache key for the current page and tag type
     """
+    from cms.models import Page
     from cms.templatetags.cms_tags import _get_page_by_untyped_arg, _get_cache_key
     if not isinstance(page, Page):
         page = _get_page_by_untyped_arg(page, request, site_id)
