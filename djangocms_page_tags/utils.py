@@ -1,4 +1,20 @@
 # -*- coding: utf-8 -*-
+from cms.models import Page
+
+
+def get_cache_key(request, page, lang, site_id, title):
+    """
+    Create the cache key for the current page and tag type
+    """
+    from cms.templatetags.cms_tags import _get_page_by_untyped_arg, _get_cache_key
+    if not isinstance(page, Page):
+        page = _get_page_by_untyped_arg(page, request, site_id)
+    if not site_id:
+        site_id = page.site_id
+    if not title:
+        return _get_cache_key('page_tags', page, '', site_id) + '_type:tags_list'
+    else:
+        return _get_cache_key('title_tags', page, lang, site_id) + '_type:tags_list'
 
 
 def get_page_tags(page):
@@ -93,17 +109,14 @@ def get_page_tags_from_request(request, page_lookup, lang, site, title=False):
     :return: list of tags
     :type: List
     """
-    from cms.templatetags.cms_tags import _get_cache_key, _get_page_by_untyped_arg
+    from cms.templatetags.cms_tags import _get_page_by_untyped_arg
     from cms.utils import get_language_from_request, get_cms_setting, get_site_id
     from django.core.cache import cache
 
     site_id = get_site_id(site)
     if lang is None:
         lang = get_language_from_request(request)
-    if title:
-        cache_key = _get_cache_key('page_tags', page_lookup, lang, site_id) + '_type:tags_list'
-    else:
-        cache_key = _get_cache_key('title_tags', page_lookup, lang, site_id) + '_type:tags_list'
+    cache_key = get_cache_key(request, page_lookup, lang, site, title)
     tags_list = cache.get(cache_key)
     if not tags_list:
         page = _get_page_by_untyped_arg(page_lookup, request, site_id)
