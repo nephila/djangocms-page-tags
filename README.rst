@@ -65,6 +65,11 @@ Templatetags
 * ``page_tags``
 * ``title_tags``
 
+Documentation
+-------------
+
+For further documentation see http://djangocms-page-tags.readthedocs.org/
+
 
 .. image:: https://d2weczhvl823v0.cloudfront.net/nephila/djangocms-page-tags/trend.png
    :alt: Bitdeli badge
