@@ -2,6 +2,7 @@
 """
 Tests for `djangocms_page_tags` module.
 """
+from cms.utils.i18n import get_language_list
 
 from django.contrib.auth.models import User
 from django.http import SimpleCookie
@@ -17,6 +18,7 @@ class BaseTest(TestCase):
     """
     request_factory = None
     user = None
+    languages = get_language_list()
 
     @classmethod
     def setUpClass(cls):

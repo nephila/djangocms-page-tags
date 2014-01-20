@@ -33,7 +33,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=(
-	'django-cms>=3.0',
+        'django-cms>=3.0',
         'django-taggit>=0.11.2',
         'django-taggit-autosuggest',
         'django-classy-tags>=0.3.4.1',

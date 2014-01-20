@@ -2,6 +2,7 @@
 from cms.toolbar.items import ModalItem
 from cms.api import get_page_draft
 from cms.utils import get_cms_setting
+from cms.utils.i18n import get_language_object
 from cms.utils.permissions import has_page_change_permission
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.utils.translation import ugettext_lazy as _
@@ -12,8 +13,8 @@ from cms.toolbar_base import CMSToolbar
 from .models import PageTags, TitleTags
 
 
-PAGE_TAGS_MENU_TITLE = _('Page tags (global)')
-TITLE_TAGS_MENU_TITLE = _('Title tags (per language)')
+PAGE_TAGS_MENU_TITLE = _('Page tags')
+PAGE_TAGS_ITEM_TITLE = _(u'Common')
 
 @toolbar_pool.register
 class PageTagsToolbar(CMSToolbar):
@@ -34,11 +35,13 @@ class PageTagsToolbar(CMSToolbar):
         can_change = self.request.current_page and self.request.current_page.has_change_permission(self.request)
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
-            current_page_menu = self.toolbar.get_or_create_menu('page')
-            advanced = current_page_menu.find_first(ModalItem, url=reverse('admin:cms_page_advanced', args=(self.page.pk,)))
+            tags_menu = self.toolbar.get_or_create_menu('page')
+            advanced = tags_menu.find_first(ModalItem, url=reverse('admin:cms_page_advanced', args=(self.page.pk,)))
+            tags_menu = tags_menu.get_or_create_menu('pagetags', PAGE_TAGS_MENU_TITLE, position=advanced)
+            position = 0
             # Page tags
             try:
-                page_extension = PageTags.objects.get(extended_object_id=self.page.id)
+                page_extension = PageTags.objects.get(extended_object_id=self.page.pk)
             except PageTags.DoesNotExist:
                 page_extension = None
             try:
@@ -53,26 +56,29 @@ class PageTagsToolbar(CMSToolbar):
                 # not in urls
                 pass
             else:
-                current_page_menu.add_modal_item(PAGE_TAGS_MENU_TITLE,
-                                                 url=url, disabled=not_edit_mode,
-                                                 position=advanced)
+                tags_menu.add_modal_item(PAGE_TAGS_ITEM_TITLE,
+                                         url=url, disabled=not_edit_mode,
+                                         position=position)
             # Title tags
-            try:
-                title_extension = TitleTags.objects.get(extended_object_id=self.page.id)
-            except TitleTags.DoesNotExist:
-                title_extension = None
-            try:
-                if title_extension:
-                    url = reverse('admin:djangocms_page_tags_titletags_change',
-                                  args=(title_extension.pk,))
+            for title in self.page.title_set.all():
+                try:
+                    title_extension = TitleTags.objects.get(extended_object_id=title.pk)
+                except TitleTags.DoesNotExist:
+                    title_extension = None
+                try:
+                    if title_extension:
+                        url = reverse('admin:djangocms_page_tags_titletags_change',
+                                      args=(title_extension.pk,))
+                    else:
+                        url = "%s?extended_object=%s" % (
+                            reverse('admin:djangocms_page_tags_titletags_add'),
+                            title.pk)
+                except NoReverseMatch:
+                    # not in urls
+                    pass
                 else:
-                    url = "%s?extended_object=%s" % (
-                        reverse('admin:djangocms_page_tags_titletags_add'),
-                        self.page.pk)
-            except NoReverseMatch:
-                # not in urls
-                pass
-            else:
-                current_page_menu.add_modal_item(TITLE_TAGS_MENU_TITLE,
-                                                 url=url, disabled=not_edit_mode,
-                                                 position=advanced)
+                    position += 1
+                    language = get_language_object(title.language)
+                    tags_menu.add_modal_item(language['name'],
+                                             url=url, disabled=not_edit_mode,
+                                             position=position)
