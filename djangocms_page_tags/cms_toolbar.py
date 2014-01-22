@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from cms.toolbar.items import ModalItem
+from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
+from cms.toolbar.items import Break
 from cms.api import get_page_draft
 from cms.utils import get_cms_setting
 from cms.utils.i18n import get_language_object
@@ -13,7 +14,7 @@ from cms.toolbar_base import CMSToolbar
 from .models import PageTags, TitleTags
 
 
-PAGE_TAGS_MENU_TITLE = _('Page tags')
+PAGE_TAGS_MENU_TITLE = _('Tags')
 PAGE_TAGS_ITEM_TITLE = _(u'Common')
 
 @toolbar_pool.register
@@ -36,8 +37,8 @@ class PageTagsToolbar(CMSToolbar):
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
             tags_menu = self.toolbar.get_or_create_menu('page')
-            advanced = tags_menu.find_first(ModalItem, url=reverse('admin:cms_page_advanced', args=(self.page.pk,)))
-            tags_menu = tags_menu.get_or_create_menu('pagetags', PAGE_TAGS_MENU_TITLE, position=advanced)
+            super_item = tags_menu.find_first(Break, identifier=PAGE_MENU_SECOND_BREAK)+1
+            tags_menu = tags_menu.get_or_create_menu('pagetags', PAGE_TAGS_MENU_TITLE, position=super_item)
             position = 0
             # Page tags
             try:
