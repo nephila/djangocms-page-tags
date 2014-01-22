@@ -8,10 +8,12 @@ Assigning tags to pages / titles
 
 Tags can be assigned from the admin interface or the toolbar.
 
-In the toolbar you will find two items in the ``Page`` menu:
 
-* Title tags (per language): it allows to add tags to the current page language
-* Page tags (global): it allows to add tags to the page in every language
+In the toolbar you will find a ``Tags`` submenu in the ``Page`` menu, with two
+or more sub-items:
+
+* Common: it allows to edit page-wide (language independent) tags;
+* One entry per active language to edit language dependent tags.
 
 
 *******************************
