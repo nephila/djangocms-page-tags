@@ -66,7 +66,8 @@ class PageTagsUtilsTest(BaseTest):
         # Assign tags to page
         page_tags = models.PageTags.objects.create(extended_object=page)
         page_tags.tags.add(*self.tag_strings)
-        page.publish()
+        for lang in self.languages:
+            page.publish(lang)
 
         cache.clear()
         # Reload page from request and extract tags from it
@@ -97,7 +98,8 @@ class PageTagsUtilsTest(BaseTest):
         # Assign tags to title
         title_tags = models.TitleTags.objects.create(extended_object=page.get_title_obj('en'))
         title_tags.tags.add(*self.tag_strings)
-        page.publish()
+        for lang in self.languages:
+            page.publish(lang)
 
         # Reload page from request and extract tags from it
         request = self.get_request(page, 'en')

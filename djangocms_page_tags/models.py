@@ -14,7 +14,7 @@ from .utils import get_cache_key
 class PageTags(PageExtension):
     tags = TaggableManager()
 
-    def copy_relations(self, oldinstance):
+    def copy_relations(self, oldinstance, language):
         """ Needed to copy tags when publishing page """
         self.tags.set(*oldinstance.tags.all())
 extension_pool.register(PageTags)
@@ -23,7 +23,7 @@ extension_pool.register(PageTags)
 class TitleTags(TitleExtension):
     tags = TaggableManager()
 
-    def copy_relations(self, oldinstance):
+    def copy_relations(self, oldinstance, language):
         """ Needed to copy tags when publishing page """
         self.tags.set(*oldinstance.tags.all())
 extension_pool.register(TitleTags)
