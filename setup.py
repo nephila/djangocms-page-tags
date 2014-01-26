@@ -12,9 +12,9 @@ version = djangocms_page_tags.__version__
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
-    print("You probably want to also tag the version now:")
-    print("  git tag -a %s -m 'version %s'" % (version, version))
-    print("  git push --tags")
+    print('You probably want to also tag the version now:')
+    print('  git tag -a %s -m "version %s"' % (version, version))
+    print('  git push --tags')
     sys.exit()
 
 readme = open('README.rst').read()
@@ -41,16 +41,16 @@ setup(
     dependency_links= (
         'git+https://github.com/divio/django-cms.git@develop#egg=django-cms-3.0',
     ),
-    license="BSD",
+    license='BSD',
     zip_safe=False,
     keywords='djangocms-page-tags',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
