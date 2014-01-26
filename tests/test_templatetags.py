@@ -23,7 +23,8 @@ class TemplateTagsTest(BaseTest):
 
         request = self.get_page_request(page1.get_public_object(), AnonymousUser())
         response = details(request, '')
-        self.assertContains(response, '<ul><li>pagetag.1</li><li>pagetag.2</li></ul>')
+        self.assertContains(response, '<li>pagetag.1</li>')
+        self.assertContains(response, '<li>pagetag.2</li>')
         self.assertEqual(set(response.context_data['ptags_list']), set(tags))
         self.assertEqual(set(response.context_data['ttags_list']), set())
 
@@ -40,7 +41,7 @@ class TemplateTagsTest(BaseTest):
 
         request = self.get_page_request(page1.get_public_object(), AnonymousUser())
         response = details(request, '')
-        response.render()
-        self.assertContains(response, '<ul><li>titletag.2</li><li>titletag.1</li></ul>')
+        self.assertContains(response, '<li>titletag.2</li>')
+        self.assertContains(response, '<li>titletag.1</li>')
         self.assertEqual(set(response.context_data['ttags_list']), set(tags))
         self.assertEqual(set(response.context_data['ptags_list']), set())
