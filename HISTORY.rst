@@ -3,9 +3,10 @@
 History
 -------
 
-0.2.1 (2014-02-24)
+0.2.1 (2014-03-29)
 ++++++++++++++++++
 
+* Support for django CMS 3.0 RC1
 * Add verbose description
 
 0.2.0 (2014-02-02)
