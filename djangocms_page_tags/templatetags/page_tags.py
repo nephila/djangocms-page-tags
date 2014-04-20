@@ -22,7 +22,7 @@ class IncludePageTagsList(InclusionTag):
 
     def get_context(self, context, page_lookup, lang, site):
         request = context.get('request', False)
-        if not request:
+        if not request:  # pragma: no cover
             return {'tags_list': ''}
         tags_list = get_page_tags_from_request(request, page_lookup, lang, site,
                                                self.title)
@@ -53,7 +53,7 @@ class PageTagsList(AsTag):
 
     def get_value(self, context, page_lookup, lang, site):
         request = context.get('request', False)
-        if not request:
+        if not request:  # pragma: no cover
             return ''
         return get_page_tags_from_request(request, page_lookup, lang, site,
                                           self.title)

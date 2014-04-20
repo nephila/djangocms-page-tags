@@ -54,7 +54,7 @@ class PageTagsToolbar(CMSToolbar):
                     url = "%s?extended_object=%s" % (
                         reverse('admin:djangocms_page_tags_pagetags_add'),
                         self.page.pk)
-            except NoReverseMatch:
+            except NoReverseMatch:  # pragma: no cover
                 # not in urls
                 pass
             else:
@@ -75,7 +75,7 @@ class PageTagsToolbar(CMSToolbar):
                         url = "%s?extended_object=%s" % (
                             reverse('admin:djangocms_page_tags_titletags_add'),
                             title.pk)
-                except NoReverseMatch:
+                except NoReverseMatch:  # pragma: no cover
                     # not in urls
                     pass
                 else:
