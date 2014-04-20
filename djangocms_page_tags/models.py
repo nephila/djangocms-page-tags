@@ -36,7 +36,7 @@ class TitleTags(TitleExtension):
 extension_pool.register(TitleTags)
 
 
-## Cache cleanup when deleting pages / editing page extensions
+# Cache cleanup when deleting pages / editing page extensions
 @receiver(pre_delete, sender=Page)
 def cleanup_page(sender, instance, **kwargs):
     key = get_cache_key(None, instance, '',

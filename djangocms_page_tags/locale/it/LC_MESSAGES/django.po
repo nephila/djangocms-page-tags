@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djangocms-page-tags\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-22 16:49+0100\n"
-"PO-Revision-Date: 2014-01-22 15:52+0000\n"
+"POT-Creation-Date: 2014-04-20 07:14+0200\n"
+"PO-Revision-Date: 2014-04-20 05:15+0000\n"
 "Last-Translator: yakky <i.spalletti@nephila.it>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/djangocms-page-tags/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,14 @@ msgstr "Tag"
 #: cms_toolbar.py:18
 msgid "Common"
 msgstr "Generale"
+
+#: models.py:23
+msgid "Page tags (all languages)"
+msgstr "Tag per pagina (globale)"
+
+#: models.py:35
+msgid "Page tags (language-dependent)"
+msgstr "Tag per titolo (per lingua)"
 
 #: templates/djangocms_page_tags/templatetags/page_tags.html:4
 msgid "Page tags:"

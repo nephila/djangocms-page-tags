@@ -1,6 +1,6 @@
-=============================
+===================
 djangocms-page-tags
-=============================
+===================
 
 .. image:: https://badge.fury.io/py/djangocms-page-tags.png
     :target: http://badge.fury.io/py/djangocms-page-tags
