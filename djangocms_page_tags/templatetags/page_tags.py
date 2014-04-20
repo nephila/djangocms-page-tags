@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.utils.translation import ugettext_lazy as _
-from classytags.arguments import Argument, MultiValueArgument
-from classytags.core import Options, Tag
+from classytags.arguments import Argument
+from classytags.core import Options
 from classytags.helpers import InclusionTag, AsTag
 from django import template
 
