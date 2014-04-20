@@ -17,9 +17,9 @@ djangocms-page-tags
 
 Tagged pages for django CMS 3
 
-
+**********
 Quickstart
-----------
+**********
 
 Install djangocms-page-tags::
 
@@ -44,9 +44,9 @@ or::
 
     $ python manage.py migrate
 
-
+*****
 Usage
------
+*****
 
 You will find two new items in the toolbar Page menu:
 
@@ -55,8 +55,9 @@ You will find two new items in the toolbar Page menu:
 
 These items allows to add tags to ``Title`` and ``Page`` instances, respectively
 
+************
 Templatetags
-------------
+************
 
 ``djangocms-page-tags`` allows showing tags using four templatetags
 
@@ -65,8 +66,9 @@ Templatetags
 * ``page_tags``
 * ``title_tags``
 
+*************
 Documentation
--------------
+*************
 
 For further documentation see http://djangocms-page-tags.readthedocs.org/
 
