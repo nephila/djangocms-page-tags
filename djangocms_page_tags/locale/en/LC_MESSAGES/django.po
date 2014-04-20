@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-22 16:49+0100\n"
+"POT-Creation-Date: 2014-04-20 07:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,14 @@ msgstr ""
 
 #: cms_toolbar.py:18
 msgid "Common"
+msgstr ""
+
+#: models.py:23
+msgid "Page tags (all languages)"
+msgstr ""
+
+#: models.py:35
+msgid "Page tags (language-dependent)"
 msgstr ""
 
 #: templates/djangocms_page_tags/templatetags/page_tags.html:4
