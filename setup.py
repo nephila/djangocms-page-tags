@@ -38,9 +38,6 @@ setup(
         'django-taggit-autosuggest',
         'django-classy-tags>=0.3.4.1',
     ),
-    dependency_links= (
-        'git+https://github.com/divio/django-cms.git@develop#egg=django-cms-3.0',
-    ),
     license='BSD',
     zip_safe=False,
     keywords='djangocms-page-tags',

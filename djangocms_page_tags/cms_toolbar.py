@@ -17,6 +17,7 @@ from .models import PageTags, TitleTags
 PAGE_TAGS_MENU_TITLE = _('Tags')
 PAGE_TAGS_ITEM_TITLE = _(u'Common')
 
+
 @toolbar_pool.register
 class PageTagsToolbar(CMSToolbar):
     def populate(self):
@@ -37,7 +38,7 @@ class PageTagsToolbar(CMSToolbar):
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
             tags_menu = self.toolbar.get_or_create_menu('page')
-            super_item = tags_menu.find_first(Break, identifier=PAGE_MENU_SECOND_BREAK)+1
+            super_item = tags_menu.find_first(Break, identifier=PAGE_MENU_SECOND_BREAK) + 1
             tags_menu = tags_menu.get_or_create_menu('pagetags', PAGE_TAGS_MENU_TITLE, position=super_item)
             position = 0
             # Page tags
@@ -53,7 +54,7 @@ class PageTagsToolbar(CMSToolbar):
                     url = "%s?extended_object=%s" % (
                         reverse('admin:djangocms_page_tags_pagetags_add'),
                         self.page.pk)
-            except NoReverseMatch:
+            except NoReverseMatch:  # pragma: no cover
                 # not in urls
                 pass
             else:
@@ -74,7 +75,7 @@ class PageTagsToolbar(CMSToolbar):
                         url = "%s?extended_object=%s" % (
                             reverse('admin:djangocms_page_tags_titletags_add'),
                             title.pk)
-                except NoReverseMatch:
+                except NoReverseMatch:  # pragma: no cover
                     # not in urls
                     pass
                 else:
