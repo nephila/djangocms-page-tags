@@ -2,18 +2,21 @@
 djangocms-page-tags
 ===================
 
-.. image:: https://badge.fury.io/py/djangocms-page-tags.png
-    :target: http://badge.fury.io/py/djangocms-page-tags
+.. image:: https://pypip.in/v/djangocms-page-tags/badge.png
+        :target: https://pypi.python.org/pypi/djangocms-page-tags
+        :alt: Latest PyPI version
     
 .. image:: https://travis-ci.org/nephila/djangocms-page-tags.png?branch=master
         :target: https://travis-ci.org/nephila/djangocms-page-tags
+        :alt: Latest Travis CI build status
 
-.. image:: http://img.shields.io/pypi/dm/djangocms-page-tags.png
-        :target: https://pypi.python.org/pypi/djangocms-page-tags?version=latest
+.. image:: https://pypip.in/d/djangocms-page-tags/badge.png
+        :target: https://pypi.python.org/pypi/djangocms-page-tags
+        :alt: Monthly downloads
 
 .. image:: https://coveralls.io/repos/nephila/djangocms-page-tags/badge.png?branch=master
         :target: https://coveralls.io/r/nephila/djangocms-page-tags?branch=master
-
+        :alt: Test coverage
 
 Tagged pages for django CMS 3
 
