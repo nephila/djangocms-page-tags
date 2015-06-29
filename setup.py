@@ -40,6 +40,7 @@ setup(
     ),
     license='BSD',
     zip_safe=False,
+    test_suite='cms_helper.run',
     keywords='djangocms-page-tags',
     classifiers=[
         'Development Status :: 4 - Beta',

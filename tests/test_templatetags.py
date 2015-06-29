@@ -33,13 +33,13 @@ class TemplateTagsTest(BaseTest):
         Test title-level templatetags
         """
         page1, page2 = self.get_pages()
-        title_ext = TitleTags.objects.create(extended_object=page1.get_title_obj('en'))
+        title_ext = TitleTags.objects.create(extended_object=page2.get_title_obj('en'))
         title_ext.tags.add("titletag.1", "titletag.2")
         for lang in self.languages:
-            page1.publish(lang)
+            page2.publish(lang)
         tags = Tag.objects.filter(name__in=("titletag.1", "titletag.2"))
 
-        request = self.get_page_request(page1.get_public_object(), AnonymousUser())
+        request = self.get_page_request(page2.get_public_object(), AnonymousUser())
         response = details(request, '')
         self.assertContains(response, '<li>titletag.2</li>')
         self.assertContains(response, '<li>titletag.1</li>')
