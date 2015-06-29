@@ -128,7 +128,7 @@ def get_page_tags_from_request(request, page_lookup, lang, site, title=False):
                 tags_list = get_title_tags(page, lang)
             else:
                 tags_list = get_page_tags(page)
-            cache.set(cache_key, tags_list, get_cms_setting('CACHE_DURATIONS')['content'])
+            cache.set(cache_key, tags_list, timeout=get_cms_setting('CACHE_DURATIONS')['content'])
     if not tags_list:
         tags_list = ()
     return tags_list
