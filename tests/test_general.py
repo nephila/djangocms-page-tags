@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from django.core.cache import cache
 from django.template.defaultfilters import slugify
 from taggit.models import Tag
@@ -7,7 +8,7 @@ from djangocms_page_tags import models
 from djangocms_page_tags.utils import (page_has_tag, get_page_tags,
                                        title_has_tag, get_title_tags,
                                        get_page_tags_from_request,
-                                       get_title_tags_from_request)
+                                       get_title_tags_from_request, get_cache_key)
 
 from . import BaseTest
 
@@ -105,3 +106,37 @@ class PageTagsUtilsTest(BaseTest):
         request = self.get_request(page, 'en')
         tags_list = get_title_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
         self.assertEqual(set(self.tag_strings), set([tag.name for tag in tags_list]))
+
+    def test_cache_cleanup(self):
+        """
+        Tests the correct retrieval of tags for a title from request
+        """
+        page, page_2 = self.get_pages()
+
+        # Assign tags to title
+        title_tags = models.TitleTags.objects.create(extended_object=page.get_title_obj('en'))
+        title_tags.tags.add(*self.tag_strings)
+        page_tags = models.PageTags.objects.create(extended_object=page)
+        page_tags.tags.add(*self.tag_strings)
+        for lang in self.languages:
+            page.publish(lang)
+
+        # Reload page from request and extract tags from it
+        request = self.get_request(page, 'en')
+        title_tags_list = get_title_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
+        page_tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
+
+        title_key = get_cache_key(None, page.get_public_object(), 'en', page.get_public_object().site_id, True)
+        page_key = get_cache_key(None, page.get_public_object(), '', page.get_public_object().site_id, False)
+
+        title_cache = cache.get(title_key)
+        page_cache = cache.get(page_key)
+
+        self.assertEqual(set(title_tags_list), set(title_cache))
+        self.assertEqual(set(page_tags_list), set(page_cache))
+
+        page.get_public_object().get_title_obj('en').delete()
+        self.assertIsNone(cache.get(title_key))
+
+        page.get_public_object().delete()
+        self.assertIsNone(cache.get(page_key))
