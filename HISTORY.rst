@@ -4,6 +4,13 @@
 History
 *******
 
+0.4.0 (2015-06-29)
+==================
+
+* Add support for django CMS 3.1
+* Add support for Django 1.7
+* Use djangocms-helper for testing
+
 0.3.0 (2014-04-20)
 ==================
 
