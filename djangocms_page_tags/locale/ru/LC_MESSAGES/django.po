@@ -3,41 +3,41 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# yakky <i.spalletti@nephila.it>, 2014
+# Rüstem Mirzaoğlu, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: djangocms-page-tags\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-20 07:14+0200\n"
-"PO-Revision-Date: 2015-01-24 22:33+0000\n"
-"Last-Translator: yakky <i.spalletti@nephila.it>\n"
-"Language-Team: Italian (http://www.transifex.com/nephila/djangocms-page-tags/language/it/)\n"
+"PO-Revision-Date: 2015-01-25 11:17+0000\n"
+"Last-Translator: Rüstem Mirzaoğlu\n"
+"Language-Team: Russian (http://www.transifex.com/nephila/djangocms-page-tags/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: cms_toolbar.py:17
 msgid "Tags"
-msgstr "Tag"
+msgstr "Метки"
 
 #: cms_toolbar.py:18
 msgid "Common"
-msgstr "Generale"
+msgstr "Общие"
 
 #: models.py:23
 msgid "Page tags (all languages)"
-msgstr "Tag per pagina (globale)"
+msgstr "Метки страницы (для всех языков)"
 
 #: models.py:35
 msgid "Page tags (language-dependent)"
-msgstr "Tag per titolo (per lingua)"
+msgstr "Метки страницы (языкозависимый)"
 
 #: templates/djangocms_page_tags/templatetags/page_tags.html:4
 msgid "Page tags:"
-msgstr "Tag pagina:"
+msgstr "Метки страницы"
 
 #: templates/djangocms_page_tags/templatetags/title_tags.html:4
 msgid "Title tags:"
-msgstr "Tag titolo:"
+msgstr "Метки заголовка"
