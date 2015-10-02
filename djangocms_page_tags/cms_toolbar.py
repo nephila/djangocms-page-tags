@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
+
 from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
 from cms.toolbar.items import Break
 from cms.api import get_page_draft
@@ -34,12 +36,17 @@ class PageTagsToolbar(CMSToolbar):
         else:
             has_global_current_page_change_permission = False
             # check if user has page edit permission
-        can_change = self.request.current_page and self.request.current_page.has_change_permission(self.request)
+        can_change = (
+            self.request.current_page
+            and self.request.current_page.has_change_permission(self.request)
+        )
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
             tags_menu = self.toolbar.get_or_create_menu('page')
             super_item = tags_menu.find_first(Break, identifier=PAGE_MENU_SECOND_BREAK) + 1
-            tags_menu = tags_menu.get_or_create_menu('pagetags', PAGE_TAGS_MENU_TITLE, position=super_item)
+            tags_menu = tags_menu.get_or_create_menu(
+                'pagetags', PAGE_TAGS_MENU_TITLE, position=super_item
+            )
             position = 0
             # Page tags
             try:

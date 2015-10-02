@@ -13,6 +13,7 @@ help:
 clean: clean-build clean-pyc
 
 clean-build:
+	python setup.py clean --all
 	rm -fr build/
 	rm -fr dist/
 	rm -fr *.egg-info
@@ -24,22 +25,22 @@ clean-pyc:
 
 lint:
 	flake8 djangocms_page_tags tests
+	djangocms-helper djangocms_page_tags pyflakes --cms
 
 test:
-	python runtests.py test
+	djangocms-helper djangocms_page_tags test --cms --nose
 
 test-all:
 	tox
 
 coverage:
-	coverage run --source djangocms-page-tags setup.py test
+	coverage erase
+	coverage run `which djangocms-helper` djangocms_page_tags test --cms --nose
 	coverage report -m
-	coverage html
-	open htmlcov/index.html
 
 release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
 
 sdist: clean
 	python setup.py sdist

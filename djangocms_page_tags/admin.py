@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
+
 from cms.extensions import PageExtensionAdmin, TitleExtensionAdmin
 from django.conf import settings
 from django.contrib import admin

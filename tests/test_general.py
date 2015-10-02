@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.conf import settings
+from __future__ import absolute_import, print_function, unicode_literals
+
 from django.core.cache import cache
 from django.template.defaultfilters import slugify
 from taggit.models import Tag

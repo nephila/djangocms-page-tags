@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
+
 from cms.views import details
 from django.contrib.auth.models import AnonymousUser
-from django.utils.translation import ugettext_lazy as _
 from taggit.models import Tag
 
 from djangocms_page_tags.models import PageTags, TitleTags
-from tests import BaseTest
+from . import BaseTest
 
 
 class TemplateTagsTest(BaseTest):

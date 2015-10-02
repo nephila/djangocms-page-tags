@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('taggit', '0001_initial'),
+        ('taggit_autosuggest', '__latest__'),
         ('cms', '0003_auto_20140926_2347'),
     ]
 

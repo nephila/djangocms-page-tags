@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
+
+
 def get_cache_key(request, page, lang, site_id, title):
     """
     Create the cache key for the current page and tag type
@@ -43,7 +46,8 @@ def page_has_tag(page, tag):
     :param page: a Page instance
     :param tag: a Tag instance or a slug string.
 
-    :return: whether the Page instance has the given tag attached (False if no Page or no attached PageTags exists)
+    :return: whether the Page instance has the given tag attached (False if no Page or no
+             attached PageTags exists)
     :type: Boolean
     """
     from .models import PageTags
@@ -84,7 +88,8 @@ def title_has_tag(page, lang, tag):
     :param lang: a language code
     :param tag: a Tag instance or a slug string.
 
-    :return: whether the Title instance has the given tag attached (False if no Title or no attached TitleTags exists)
+    :return: whether the Title instance has the given tag attached (False if no Title or no
+             attached TitleTags exists)
     :type: Boolean
     """
     from .models import TitleTags
@@ -93,7 +98,9 @@ def title_has_tag(page, lang, tag):
     else:
         slug = tag
     try:
-        return page.get_title_obj(language=lang, fallback=False).titletags.tags.filter(slug=slug).exists()
+        return page.get_title_obj(
+            language=lang, fallback=False
+        ).titletags.tags.filter(slug=slug).exists()
     except TitleTags.DoesNotExist:
         return False
 
