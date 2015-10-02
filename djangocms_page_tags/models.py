@@ -21,7 +21,7 @@ class PageTags(PageExtension):
         self.tags.set(*oldinstance.tags.all())
 
     class Meta:
-        verbose_name = _(u'Page tags (all languages)')
+        verbose_name = _('Page tags (all languages)')
 extension_pool.register(PageTags)
 
 
@@ -33,7 +33,7 @@ class TitleTags(TitleExtension):
         self.tags.set(*oldinstance.tags.all())
 
     class Meta:
-        verbose_name = _(u'Page tags (language-dependent)')
+        verbose_name = _('Page tags (language-dependent)')
 extension_pool.register(TitleTags)
 
 

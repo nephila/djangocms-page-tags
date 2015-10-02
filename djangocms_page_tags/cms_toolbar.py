@@ -15,7 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 from .models import PageTags, TitleTags
 
 PAGE_TAGS_MENU_TITLE = _('Tags')
-PAGE_TAGS_ITEM_TITLE = _(u'Common')
+PAGE_TAGS_ITEM_TITLE = _('Common')
 
 
 @toolbar_pool.register
@@ -56,7 +56,7 @@ class PageTagsToolbar(CMSToolbar):
                     url = reverse('admin:djangocms_page_tags_pagetags_change',
                                   args=(page_extension.pk,))
                 else:
-                    url = "%s?extended_object=%s" % (
+                    url = '%s?extended_object=%s' % (
                         reverse('admin:djangocms_page_tags_pagetags_add'),
                         self.page.pk)
             except NoReverseMatch:  # pragma: no cover
@@ -77,7 +77,7 @@ class PageTagsToolbar(CMSToolbar):
                         url = reverse('admin:djangocms_page_tags_titletags_change',
                                       args=(title_extension.pk,))
                     else:
-                        url = "%s?extended_object=%s" % (
+                        url = '%s?extended_object=%s' % (
                             reverse('admin:djangocms_page_tags_titletags_add'),
                             title.pk)
                 except NoReverseMatch:  # pragma: no cover

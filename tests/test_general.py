@@ -15,9 +15,9 @@ from . import BaseTest
 
 
 class PageTagsUtilsTest(BaseTest):
-    tag_strings = [u"tag one", u"tag two", u"tag three"]
-    tag_strings_fr = [u"tag un", u"tag deux", u"tag trois"]
-    tag_strings_it = [u"tag uno", u"tag due", u"tag tre"]
+    tag_strings = ['tag one', 'tag two', 'tag three']
+    tag_strings_fr = ['tag un', 'tag deux', 'tag trois']
+    tag_strings_it = ['tag uno', 'tag due', 'tag tre']
 
     def test_page_tags(self):
         """
