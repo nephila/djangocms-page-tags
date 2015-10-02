@@ -1,22 +1,23 @@
 # -*- coding: utf-8 -*-
-from django.conf import settings
+from __future__ import absolute_import, print_function, unicode_literals
+
 from django.core.cache import cache
 from django.template.defaultfilters import slugify
 from taggit.models import Tag
 
 from djangocms_page_tags import models
-from djangocms_page_tags.utils import (page_has_tag, get_page_tags,
-                                       title_has_tag, get_title_tags,
-                                       get_page_tags_from_request,
-                                       get_title_tags_from_request, get_cache_key)
+from djangocms_page_tags.utils import (
+    get_cache_key, get_page_tags, get_page_tags_from_request, get_title_tags,
+    get_title_tags_from_request, page_has_tag, title_has_tag,
+)
 
 from . import BaseTest
 
 
 class PageTagsUtilsTest(BaseTest):
-    tag_strings = [u"tag one", u"tag two", u"tag three"]
-    tag_strings_fr = [u"tag un", u"tag deux", u"tag trois"]
-    tag_strings_it = [u"tag uno", u"tag due", u"tag tre"]
+    tag_strings = ['tag one', 'tag two', 'tag three']
+    tag_strings_fr = ['tag un', 'tag deux', 'tag trois']
+    tag_strings_it = ['tag uno', 'tag due', 'tag tre']
 
     def test_page_tags(self):
         """

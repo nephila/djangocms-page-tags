@@ -1,21 +1,25 @@
 # -*- coding: utf-8 -*-
-from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
-from cms.toolbar.items import Break
+from __future__ import absolute_import, print_function, unicode_literals
+
 from cms.api import get_page_draft
+from cms.toolbar.items import Break
+from cms.toolbar_base import CMSToolbar
+from cms.toolbar_pool import toolbar_pool
 from cms.utils import get_cms_setting
 from cms.utils.i18n import get_language_object
 from cms.utils.permissions import has_page_change_permission
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.core.urlresolvers import NoReverseMatch, reverse
 from django.utils.translation import ugettext_lazy as _
-
-from cms.toolbar_pool import toolbar_pool
-from cms.toolbar_base import CMSToolbar
 
 from .models import PageTags, TitleTags
 
+try:
+    from cms.cms_toolbars import PAGE_MENU_SECOND_BREAK
+except ImportError:
+    from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
 
 PAGE_TAGS_MENU_TITLE = _('Tags')
-PAGE_TAGS_ITEM_TITLE = _(u'Common')
+PAGE_TAGS_ITEM_TITLE = _('Common')
 
 
 @toolbar_pool.register
@@ -34,12 +38,17 @@ class PageTagsToolbar(CMSToolbar):
         else:
             has_global_current_page_change_permission = False
             # check if user has page edit permission
-        can_change = self.request.current_page and self.request.current_page.has_change_permission(self.request)
+        can_change = (
+            self.request.current_page
+            and self.request.current_page.has_change_permission(self.request)
+        )
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
             tags_menu = self.toolbar.get_or_create_menu('page')
             super_item = tags_menu.find_first(Break, identifier=PAGE_MENU_SECOND_BREAK) + 1
-            tags_menu = tags_menu.get_or_create_menu('pagetags', PAGE_TAGS_MENU_TITLE, position=super_item)
+            tags_menu = tags_menu.get_or_create_menu(
+                'pagetags', PAGE_TAGS_MENU_TITLE, position=super_item
+            )
             position = 0
             # Page tags
             try:
@@ -51,7 +60,7 @@ class PageTagsToolbar(CMSToolbar):
                     url = reverse('admin:djangocms_page_tags_pagetags_change',
                                   args=(page_extension.pk,))
                 else:
-                    url = "%s?extended_object=%s" % (
+                    url = '%s?extended_object=%s' % (
                         reverse('admin:djangocms_page_tags_pagetags_add'),
                         self.page.pk)
             except NoReverseMatch:  # pragma: no cover
@@ -72,7 +81,7 @@ class PageTagsToolbar(CMSToolbar):
                         url = reverse('admin:djangocms_page_tags_titletags_change',
                                       args=(title_extension.pk,))
                     else:
-                        url = "%s?extended_object=%s" % (
+                        url = '%s?extended_object=%s' % (
                             reverse('admin:djangocms_page_tags_titletags_add'),
                             title.pk)
                 except NoReverseMatch:  # pragma: no cover

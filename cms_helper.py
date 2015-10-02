@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function, unicode_literals
 
-import sys
 from tempfile import mkdtemp
 gettext = lambda s: s
 
@@ -50,6 +50,7 @@ HELPER_SETTINGS = {
     'FILE_UPLOAD_TEMP_DIR': mkdtemp()
 
 }
+
 
 def run():
     from djangocms_helper import runner

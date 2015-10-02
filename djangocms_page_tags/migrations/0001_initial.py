@@ -8,35 +8,33 @@ import taggit_autosuggest.managers
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('taggit', '0001_initial'),
-        ('cms', '0003_auto_20140926_2347'),
+        ('taggit', '__latest__'),
+        ('cms', '__latest__'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='PageTags',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('extended_object', models.OneToOneField(editable=False, to='cms.Page')),
-                ('public_extension', models.OneToOneField(related_name='draft_extension', null=True, editable=False, to='djangocms_page_tags.PageTags')),
-                ('tags', taggit_autosuggest.managers.TaggableManager(to='taggit.Tag', through='taggit.TaggedItem', help_text='A comma-separated list of tags.', verbose_name='Tags')),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('extended_object', models.OneToOneField(to='cms.Page', editable=False)),
+                ('public_extension', models.OneToOneField(to='djangocms_page_tags.PageTags', related_name='draft_extension', null=True, editable=False)),
+                ('tags', taggit_autosuggest.managers.TaggableManager(through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags', help_text='A comma-separated list of tags.')),
             ],
             options={
                 'verbose_name': 'Page tags (all languages)',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='TitleTags',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('extended_object', models.OneToOneField(editable=False, to='cms.Title')),
-                ('public_extension', models.OneToOneField(related_name='draft_extension', null=True, editable=False, to='djangocms_page_tags.TitleTags')),
-                ('tags', taggit_autosuggest.managers.TaggableManager(to='taggit.Tag', through='taggit.TaggedItem', help_text='A comma-separated list of tags.', verbose_name='Tags')),
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, serialize=False, primary_key=True)),
+                ('extended_object', models.OneToOneField(to='cms.Title', editable=False)),
+                ('public_extension', models.OneToOneField(to='djangocms_page_tags.TitleTags', related_name='draft_extension', null=True, editable=False)),
+                ('tags', taggit_autosuggest.managers.TaggableManager(through='taggit.TaggedItem', to='taggit.Tag', verbose_name='Tags', help_text='A comma-separated list of tags.')),
             ],
             options={
                 'verbose_name': 'Page tags (language-dependent)',
             },
-            bases=(models.Model,),
         ),
     ]
