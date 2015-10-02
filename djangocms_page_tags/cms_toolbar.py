@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
+from cms.api import get_page_draft
 from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
 from cms.toolbar.items import Break
-from cms.api import get_page_draft
+from cms.toolbar_base import CMSToolbar
+from cms.toolbar_pool import toolbar_pool
 from cms.utils import get_cms_setting
 from cms.utils.i18n import get_language_object
 from cms.utils.permissions import has_page_change_permission
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.core.urlresolvers import NoReverseMatch, reverse
 from django.utils.translation import ugettext_lazy as _
 
-from cms.toolbar_pool import toolbar_pool
-from cms.toolbar_base import CMSToolbar
-
 from .models import PageTags, TitleTags
-
 
 PAGE_TAGS_MENU_TITLE = _('Tags')
 PAGE_TAGS_ITEM_TITLE = _(u'Common')

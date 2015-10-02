@@ -3,7 +3,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 
 from classytags.arguments import Argument
 from classytags.core import Options
-from classytags.helpers import InclusionTag, AsTag
+from classytags.helpers import AsTag, InclusionTag
 from django import template
 
 from ..utils import get_page_tags_from_request

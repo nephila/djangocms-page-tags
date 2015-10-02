@@ -6,10 +6,10 @@ from django.template.defaultfilters import slugify
 from taggit.models import Tag
 
 from djangocms_page_tags import models
-from djangocms_page_tags.utils import (page_has_tag, get_page_tags,
-                                       title_has_tag, get_title_tags,
-                                       get_page_tags_from_request,
-                                       get_title_tags_from_request, get_cache_key)
+from djangocms_page_tags.utils import (
+    get_cache_key, get_page_tags, get_page_tags_from_request, get_title_tags,
+    get_title_tags_from_request, page_has_tag, title_has_tag,
+)
 
 from . import BaseTest
 

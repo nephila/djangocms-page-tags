@@ -6,6 +6,7 @@ from django.contrib.auth.models import AnonymousUser
 from taggit.models import Tag
 
 from djangocms_page_tags.models import PageTags, TitleTags
+
 from . import BaseTest
 
 

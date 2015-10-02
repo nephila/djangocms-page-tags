@@ -4,15 +4,16 @@ Tests for `djangocms_page_tags` modules module.
 """
 from __future__ import absolute_import, print_function, unicode_literals
 
-from cms.toolbar.items import ModalItem, Menu, SubMenu
+from cms.toolbar.items import Menu, ModalItem, SubMenu
 from cms.utils.compat.dj import force_unicode
 from cms.utils.i18n import get_language_object
 from django.contrib.auth.models import Permission, User
 from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
 
-from djangocms_page_tags.cms_toolbar import PAGE_TAGS_MENU_TITLE, PAGE_TAGS_ITEM_TITLE
+from djangocms_page_tags.cms_toolbar import PAGE_TAGS_ITEM_TITLE, PAGE_TAGS_MENU_TITLE
 from djangocms_page_tags.models import PageTags, TitleTags
+
 from . import BaseTest
 
 
