@@ -2,7 +2,6 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from cms.api import get_page_draft
-from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
 from cms.toolbar.items import Break
 from cms.toolbar_base import CMSToolbar
 from cms.toolbar_pool import toolbar_pool
@@ -13,6 +12,11 @@ from django.core.urlresolvers import NoReverseMatch, reverse
 from django.utils.translation import ugettext_lazy as _
 
 from .models import PageTags, TitleTags
+
+try:
+    from cms.cms_toolbars import PAGE_MENU_SECOND_BREAK
+except ImportError:
+    from cms.cms_toolbar import PAGE_MENU_SECOND_BREAK
 
 PAGE_TAGS_MENU_TITLE = _('Tags')
 PAGE_TAGS_ITEM_TITLE = _('Common')
