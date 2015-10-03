@@ -4,6 +4,15 @@
 History
 *******
 
+0.4.1 (2015-10-03)
+==================
+
+* Add support for django CMS 3.2
+* Add support for Django 1.8
+* Update translation
+* PEP-8 / isort code cleanup
+
+
 0.4.0 (2015-06-29)
 ==================
 
