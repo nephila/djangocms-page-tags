@@ -6,7 +6,7 @@ from cms.toolbar.items import Break
 from cms.toolbar_base import CMSToolbar
 from cms.toolbar_pool import toolbar_pool
 from cms.utils import get_cms_setting
-from cms.utils.i18n import get_language_object
+from cms.utils.i18n import get_language_list, get_language_object
 from cms.utils.permissions import has_page_change_permission
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.utils.translation import ugettext_lazy as _
@@ -62,16 +62,18 @@ class PageTagsToolbar(CMSToolbar):
                 else:
                     url = '%s?extended_object=%s' % (
                         reverse('admin:djangocms_page_tags_pagetags_add'),
-                        self.page.pk)
+                        self.page.pk
+                    )
             except NoReverseMatch:  # pragma: no cover
                 # not in urls
                 pass
             else:
-                tags_menu.add_modal_item(PAGE_TAGS_ITEM_TITLE,
-                                         url=url, disabled=not_edit_mode,
+                tags_menu.add_modal_item(PAGE_TAGS_ITEM_TITLE, url=url, disabled=not_edit_mode,
                                          position=position)
             # Title tags
-            for title in self.page.title_set.all():
+            for title in self.page.title_set.filter(
+                language__in=get_language_list(self.page.site_id)
+            ):
                 try:
                     title_extension = TitleTags.objects.get(extended_object_id=title.pk)
                 except TitleTags.DoesNotExist:
@@ -90,6 +92,5 @@ class PageTagsToolbar(CMSToolbar):
                 else:
                     position += 1
                     language = get_language_object(title.language)
-                    tags_menu.add_modal_item(language['name'],
-                                             url=url, disabled=not_edit_mode,
+                    tags_menu.add_modal_item(language['name'], url=url, disabled=not_edit_mode,
                                              position=position)
