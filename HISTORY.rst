@@ -4,6 +4,11 @@
 History
 *******
 
+0.4.2 (2016-01-08)
+==================
+
+* Fix handling of pages in non existing languages
+
 0.4.1 (2015-10-03)
 ==================
 
@@ -11,7 +16,6 @@ History
 * Add support for Django 1.8
 * Update translation
 * PEP-8 / isort code cleanup
-
 
 0.4.0 (2015-06-29)
 ==================
