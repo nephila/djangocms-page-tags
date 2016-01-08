@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
-__version__ = '0.4.1.post1'
+__version__ = '0.4.2'
 __author__ = 'Iacopo Spalletti <i.spalletti@nephila.it>'
