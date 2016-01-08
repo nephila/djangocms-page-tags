@@ -1,0 +1,3 @@
+tests/*
+djangocms_page_tags/migrations/*
+djangocms_page_tags/south_migrations/*
