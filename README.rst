@@ -73,7 +73,7 @@ Templatetags
 Documentation
 *************
 
-For further documentation see http://djangocms-page-tags.readthedocs.org/
+For further documentation see https://djangocms-page-tags.readthedocs.io/
 
 
 .. image:: https://d2weczhvl823v0.cloudfront.net/nephila/djangocms-page-tags/trend.png
