@@ -60,4 +60,4 @@ For performance reason is advisable to always use a Page object as
 ``page_lookup`` parameter.
 
 
-.. _page_lookup: http://django-cms.readthedocs.org/en/latest/advanced/templatetags.html#page-lookup
+.. _page_lookup: http://docs.django-cms.org/en/release-3.3.x/reference/templatetags.html#page-lookup
