@@ -27,8 +27,6 @@ class TemplateTagsTest(BaseTest):
         response = details(request, '')
         self.assertContains(response, '<li>pagetag.1</li>')
         self.assertContains(response, '<li>pagetag.2</li>')
-        self.assertEqual(set(response.context_data['ptags_list']), set(tags))
-        self.assertEqual(set(response.context_data['ttags_list']), set())
 
     def test_title_tags(self):
         """
@@ -45,5 +43,3 @@ class TemplateTagsTest(BaseTest):
         response = details(request, '')
         self.assertContains(response, '<li>titletag.2</li>')
         self.assertContains(response, '<li>titletag.1</li>')
-        self.assertEqual(set(response.context_data['ttags_list']), set(tags))
-        self.assertEqual(set(response.context_data['ptags_list']), set())

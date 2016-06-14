@@ -3,7 +3,11 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from tempfile import mkdtemp
-gettext = lambda s: s
+
+
+def gettext(s):
+    return s
+
 
 HELPER_SETTINGS = {
     'NOSE_ARGS': [

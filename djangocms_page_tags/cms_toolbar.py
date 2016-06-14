@@ -39,8 +39,8 @@ class PageTagsToolbar(CMSToolbar):
             has_global_current_page_change_permission = False
             # check if user has page edit permission
         can_change = (
-            self.request.current_page
-            and self.request.current_page.has_change_permission(self.request)
+            self.request.current_page and
+            self.request.current_page.has_change_permission(self.request)
         )
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
