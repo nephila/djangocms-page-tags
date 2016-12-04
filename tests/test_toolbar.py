@@ -11,7 +11,7 @@ from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
 from django.utils.encoding import force_text
 
-from djangocms_page_tags.cms_toolbar import PAGE_TAGS_ITEM_TITLE, PAGE_TAGS_MENU_TITLE
+from djangocms_page_tags.cms_toolbars import PAGE_TAGS_ITEM_TITLE, PAGE_TAGS_MENU_TITLE
 from djangocms_page_tags.models import PageTags, TitleTags
 
 from . import BaseTest
