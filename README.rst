@@ -20,6 +20,15 @@ djangocms-page-tags
 
 Tagged pages for django CMS 3
 
+Python: 2.7, 3.4, 3.5
+
+Django: 1.8 to 1.10
+
+django CMS: 3.2 to 3.4
+
+.. warning:: Since version 0.5, the support for Python 2.6, Python 3.3, Django<1.8 and django CMS<3.2
+             has been dropped
+
 **********
 Quickstart
 **********
