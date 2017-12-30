@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Bashar Al-Abdulhadi, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: djangocms-page-tags\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-20 07:14+0200\n"
-"PO-Revision-Date: 2015-01-24 22:33+0000\n"
-"Last-Translator: yakky <i.spalletti@nephila.it>\n"
+"PO-Revision-Date: 2017-09-21 13:35+0000\n"
+"Last-Translator: Bashar Al-Abdulhadi\n"
 "Language-Team: Arabic (http://www.transifex.com/nephila/djangocms-page-tags/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,24 +20,24 @@ msgstr ""
 
 #: cms_toolbar.py:17
 msgid "Tags"
-msgstr ""
+msgstr "وسوم"
 
 #: cms_toolbar.py:18
 msgid "Common"
-msgstr ""
+msgstr "المتشابة"
 
 #: models.py:23
 msgid "Page tags (all languages)"
-msgstr ""
+msgstr "وسوم الصفحات (لكل اللغات)"
 
 #: models.py:35
 msgid "Page tags (language-dependent)"
-msgstr ""
+msgstr "وسوم الصفحات (لكل لغة)"
 
 #: templates/djangocms_page_tags/templatetags/page_tags.html:4
 msgid "Page tags:"
-msgstr ""
+msgstr "وسوم الصفحة:"
 
 #: templates/djangocms_page_tags/templatetags/title_tags.html:4
 msgid "Title tags:"
-msgstr ""
+msgstr "وسوم العناوين:"

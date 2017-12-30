@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# David Díaz <d.diazp@gmail.com>, 2015
+# David <d.diazp@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: djangocms-page-tags\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-20 07:14+0200\n"
-"PO-Revision-Date: 2015-04-28 12:31+0000\n"
-"Last-Translator: David Díaz <d.diazp@gmail.com>\n"
+"PO-Revision-Date: 2017-09-23 21:06+0000\n"
+"Last-Translator: David <d.diazp@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/nephila/djangocms-page-tags/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
