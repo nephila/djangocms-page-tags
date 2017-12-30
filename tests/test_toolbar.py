@@ -40,7 +40,11 @@ class ToolbarTest(BaseTest):
         toolbar = CMSToolbar(request)
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name='Page')
-        self.assertEqual(page_menu, [])
+        try:
+            self.assertEqual(page_menu, [])
+        except AssertionError:
+            tags_menu = page_menu[0].item.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
+            self.assertEqual(tags_menu, [])
 
     def test_perm(self):
         """
@@ -55,10 +59,7 @@ class ToolbarTest(BaseTest):
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name='Page')[0].item
         tags_menu = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))[0].item
-        try:
-            self.assertEqual(len(tags_menu.find_items(ModalItem, name="{0}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1)
-        except AssertionError:
-            self.assertEqual(len(tags_menu.find_items(ModalItem, name="{0} ...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1)
+        self.assertEqual(len(tags_menu.find_items(ModalItem, name="{0}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1)
 
     @override_settings(CMS_PERMISSION=True)
     def test_perm_permissions(self):
@@ -73,7 +74,11 @@ class ToolbarTest(BaseTest):
         toolbar = CMSToolbar(request)
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name='Page')
-        self.assertEqual(page_menu, [])
+        try:
+            self.assertEqual(page_menu, [])
+        except AssertionError:
+            tags_menu = page_menu[0].item.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
+            self.assertEqual(tags_menu, [])
 
     def test_toolbar(self):
         """
@@ -105,10 +110,7 @@ class ToolbarTest(BaseTest):
             toolbar.get_left_items()
             page_menu = toolbar.find_items(Menu, name='Page')[0].item
             tags_menu = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))[0].item
-            try:
-                self.assertEqual(len(tags_menu.find_items(ModalItem, name="{0}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1)
-            except AssertionError:
-                self.assertEqual(len(tags_menu.find_items(ModalItem, name="{0} ...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1)
+            self.assertEqual(len(tags_menu.find_items(ModalItem, name="{0}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1)
             self.assertEqual(len(tags_menu.find_items(ModalItem)), len(NEW_CMS_LANGS[1])+1)
 
     def test_toolbar_with_items(self):
@@ -118,29 +120,28 @@ class ToolbarTest(BaseTest):
         from cms.toolbar.toolbar import CMSToolbar
         page1, page2 = self.get_pages()
         page_ext = PageTags.objects.create(extended_object=page1)
+        title_tags = TitleTags.objects.create(extended_object=page1.get_title_obj('en'))
         request = self.get_page_request(page1, self.user, '/', edit=True)
         toolbar = CMSToolbar(request)
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name='Page')[0].item
         tags_menu = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))[0].item
-        try:
-            pagetags_menu = tags_menu.find_items(ModalItem, name="{0}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))
-            self.assertEqual(len(pagetags_menu), 1)
-        except AssertionError:
-            pagetags_menu = tags_menu.find_items(ModalItem, name="{0} ...".format(force_text(PAGE_TAGS_ITEM_TITLE)))
-            self.assertEqual(len(pagetags_menu), 1)
+        pagetags_menu = tags_menu.find_items(ModalItem, name="{0}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))
+        self.assertEqual(len(pagetags_menu), 1)
         self.assertEqual(len(pagetags_menu), 1)
         self.assertTrue(pagetags_menu[0].item.url.startswith(reverse('admin:djangocms_page_tags_pagetags_change', args=(page_ext.pk,))))
+        url_change = False
+        url_add = False
         for title in page1.title_set.all():
             language = get_language_object(title.language)
-            try:
-                titletags_menu = tags_menu.find_items(ModalItem, name='{0}...'.format(language['name']))
-                self.assertEqual(len(titletags_menu), 1)
-            except AssertionError:
-                titletags_menu = tags_menu.find_items(ModalItem, name='{0} ...'.format(language['name']))
-                self.assertEqual(len(titletags_menu), 1)
+            titletags_menu = tags_menu.find_items(ModalItem, name='{0}...'.format(language['name']))
+            self.assertEqual(len(titletags_menu), 1)
             try:
                 title_ext = TitleTags.objects.get(extended_object_id=title.pk)
+                self.assertEqual(title_ext, title_tags)
                 self.assertTrue(titletags_menu[0].item.url.startswith(reverse('admin:djangocms_page_tags_titletags_change', args=(title_ext.pk,))))
+                url_change = True
             except TitleTags.DoesNotExist:
                 self.assertTrue(titletags_menu[0].item.url.startswith(reverse('admin:djangocms_page_tags_titletags_add')))
+                url_add = True
+        self.assertTrue(url_change and url_add)

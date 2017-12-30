@@ -4,6 +4,12 @@
 History
 *******
 
+0.6.0 (unreleased)
+==================
+
+* Add Django 1.11 support
+* Drop django CMS 3.2, 3.3
+
 0.5.0 (2016-12-02)
 ==================
 
