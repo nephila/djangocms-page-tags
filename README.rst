@@ -10,10 +10,6 @@ djangocms-page-tags
         :target: https://travis-ci.org/nephila/djangocms-page-tags
         :alt: Latest Travis CI build status
 
-.. image:: https://img.shields.io/pypi/dm/djangocms-page-tags.svg
-        :target: https://pypi.python.org/pypi/djangocms-page-tags
-        :alt: Monthly downloads
-
 .. image:: https://coveralls.io/repos/nephila/djangocms-page-tags/badge.png
         :target: https://coveralls.io/r/nephila/djangocms-page-tags
         :alt: Test coverage
@@ -83,9 +79,3 @@ Documentation
 *************
 
 For further documentation see https://djangocms-page-tags.readthedocs.io/
-
-
-.. image:: https://d2weczhvl823v0.cloudfront.net/nephila/djangocms-page-tags/trend.png
-   :alt: Bitdeli badge
-   :target: https://bitdeli.com/free
-
