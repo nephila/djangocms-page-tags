@@ -24,7 +24,7 @@ class TemplateTagsTest(BaseTest):
         tags = Tag.objects.filter(name__in=('pagetag.1', 'pagetag.2'))
 
         request = self.get_page_request(page1.get_public_object(), AnonymousUser())
-        response = details(request, '')
+        response = details(request, None)
         self.assertContains(response, '<li>pagetag.1</li>')
         self.assertContains(response, '<li>pagetag.2</li>')
 
@@ -40,6 +40,6 @@ class TemplateTagsTest(BaseTest):
         tags = Tag.objects.filter(name__in=('titletag.1', 'titletag.2'))
 
         request = self.get_page_request(page2.get_public_object(), AnonymousUser())
-        response = details(request, '')
+        response = details(request, None)
         self.assertContains(response, '<li>titletag.2</li>')
         self.assertContains(response, '<li>titletag.1</li>')

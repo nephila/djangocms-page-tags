@@ -33,7 +33,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=(
-        'django-cms>=3.2',
+        'django-cms>=3.4',
         'django-taggit>=0.11.2',
         'django-taggit-autosuggest',
         'django-classy-tags>=0.3.4.1',
@@ -52,10 +52,12 @@ setup(
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 )
