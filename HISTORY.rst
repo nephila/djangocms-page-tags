@@ -4,7 +4,7 @@
 History
 *******
 
-0.6.0 (unreleased)
+0.6.0 (2017-12-30)
 ==================
 
 * Add Django 1.11 support
