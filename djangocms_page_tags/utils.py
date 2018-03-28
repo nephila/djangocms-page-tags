@@ -13,7 +13,10 @@ def get_cache_key(request, page, lang, site_id, title):
     if not isinstance(page, Page):
         page = _get_page_by_untyped_arg(page, request, site_id)
     if not site_id:
-        site_id = page.site_id
+        try:
+            site_id = page.node.site_id
+        except AttributeError:  # CMS_3_4
+            site_id = page.site_id
     if not title:
         return _get_cache_key('page_tags', page, '', site_id) + '_type:tags_list'
     else:
