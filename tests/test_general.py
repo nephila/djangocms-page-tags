@@ -74,18 +74,22 @@ class PageTagsUtilsTest(BaseTest):
         cache.clear()
         # Reload page from request and extract tags from it
         request = self.get_request(page, 'en')
+        try:
+            site_id = page.node.site_id
+        except AttributeError:  # CMS_3_4
+            site_id = page.site_id
         with self.assertNumQueries(4):
             # 1st query to get the page for the key lookup
             # 2st query to get the page in get_page_tags_from_request
             # 3nd query to get the page extension
             # 4rd query to extract tags data
-            tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
+            tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', site_id)
         self.assertEqual(set(self.tag_strings), set([tag.name for tag in tags_list]))
 
         with self.assertNumQueries(1):
             # Second run executes exactly 1 query as data is fetched from cache
             # 1st query to get the page for the key lookup
-            tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
+            tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', site_id)
 
         # Empty page has no tags
         tags_list = get_page_tags_from_request(request, 40, 'en', 1)
@@ -103,9 +107,13 @@ class PageTagsUtilsTest(BaseTest):
         for lang in self.languages:
             page.publish(lang)
 
+        try:
+            site_id = page.node.site_id
+        except AttributeError:  # CMS_3_4
+            site_id = page.site_id
         # Reload page from request and extract tags from it
         request = self.get_request(page, 'en')
-        tags_list = get_title_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
+        tags_list = get_title_tags_from_request(request, page.get_public_object().pk, 'en', site_id)
         self.assertEqual(set(self.tag_strings), set([tag.name for tag in tags_list]))
 
     def test_cache_cleanup(self):
@@ -122,13 +130,21 @@ class PageTagsUtilsTest(BaseTest):
         for lang in self.languages:
             page.publish(lang)
 
+        try:
+            site_id = page.node.site_id
+        except AttributeError:  # CMS_3_4
+            site_id = page.site_id
         # Reload page from request and extract tags from it
         request = self.get_request(page, 'en')
-        title_tags_list = get_title_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
-        page_tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', page.site_id)
+        title_tags_list = get_title_tags_from_request(request, page.get_public_object().pk, 'en', site_id)
+        page_tags_list = get_page_tags_from_request(request, page.get_public_object().pk, 'en', site_id)
 
-        title_key = get_cache_key(None, page.get_public_object(), 'en', page.get_public_object().site_id, True)
-        page_key = get_cache_key(None, page.get_public_object(), '', page.get_public_object().site_id, False)
+        try:
+            site_id = page.get_public_object().node.site_id
+        except AttributeError:  # CMS_3_4
+            site_id = page.get_public_object().site_id
+        title_key = get_cache_key(None, page.get_public_object(), 'en', site_id, True)
+        page_key = get_cache_key(None, page.get_public_object(), '', site_id, False)
 
         title_cache = cache.get(title_key)
         page_cache = cache.get(page_key)
