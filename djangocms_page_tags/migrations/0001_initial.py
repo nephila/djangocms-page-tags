@@ -8,8 +8,8 @@ import taggit_autosuggest.managers
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('taggit', '__latest__'),
-        ('cms', '__latest__'),
+        ('taggit', '0002_auto_20150616_2121'),
+        ('cms', '0003_auto_20140926_2347'),
     ]
 
     operations = [
