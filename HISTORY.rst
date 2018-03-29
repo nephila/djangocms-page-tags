@@ -4,6 +4,13 @@
 History
 *******
 
+0.6.1 (2018-03-29)
+==================
+
+* Properly set migration dependencies
+* Improve compatibility with django CMS 3.5
+* Fix issues with tox on travis
+
 0.6.0 (2017-12-30)
 ==================
 
