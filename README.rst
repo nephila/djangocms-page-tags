@@ -2,17 +2,7 @@
 djangocms-page-tags
 ===================
 
-.. image:: https://img.shields.io/pypi/v/djangocms-page-tags.svg
-        :target: https://pypi.python.org/pypi/djangocms-page-tags
-        :alt: Latest PyPI version
-
-.. image:: https://img.shields.io/travis/nephila/djangocms-page-tags.svg
-        :target: https://travis-ci.org/nephila/djangocms-page-tags
-        :alt: Latest Travis CI build status
-
-.. image:: https://coveralls.io/repos/nephila/djangocms-page-tags/badge.png
-        :target: https://coveralls.io/r/nephila/djangocms-page-tags
-        :alt: Test coverage
+|Gitter| |PyPiVersion| |PyVersion| |Status| |TestCoverage| |CodeClimate| |License|
 
 Tagged pages for django CMS 3
 
@@ -79,3 +69,31 @@ Documentation
 *************
 
 For further documentation see https://djangocms-page-tags.readthedocs.io/
+
+.. |Gitter| image:: https://img.shields.io/badge/GITTER-join%20chat-brightgreen.svg?style=flat-square
+    :target: https://gitter.im/nephila/applications
+    :alt: Join the Gitter chat
+
+.. |PyPiVersion| image:: https://img.shields.io/pypi/v/djangocms-page-sitemap.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/djangocms-page-sitemap
+    :alt: Latest PyPI version
+
+.. |PyVersion| image:: https://img.shields.io/pypi/pyversions/djangocms-page-sitemap.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/djangocms-page-sitemap
+    :alt: Python versions
+
+.. |Status| image:: https://img.shields.io/travis/nephila/djangocms-page-sitemap.svg?style=flat-square
+    :target: https://travis-ci.org/nephila/djangocms-page-sitemap
+    :alt: Latest Travis CI build status
+
+.. |TestCoverage| image:: https://img.shields.io/coveralls/nephila/djangocms-page-sitemap/master.svg?style=flat-square
+    :target: https://coveralls.io/r/nephila/djangocms-page-sitemap?branch=master
+    :alt: Test coverage
+
+.. |License| image:: https://img.shields.io/github/license/nephila/djangocms-page-sitemap.svg?style=flat-square
+   :target: https://pypi.python.org/pypi/djangocms-page-sitemap/
+    :alt: License
+
+.. |CodeClimate| image:: https://codeclimate.com/github/nephila/djangocms-page-sitemap/badges/gpa.svg?style=flat-square
+   :target: https://codeclimate.com/github/nephila/djangocms-page-sitemap
+   :alt: Code Climate
