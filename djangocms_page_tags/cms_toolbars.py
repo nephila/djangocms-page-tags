@@ -25,6 +25,8 @@ PAGE_TAGS_ITEM_TITLE = _('Common')
 
 @toolbar_pool.register
 class PageTagsToolbar(CMSToolbar):
+    page = None
+
     def populate(self):
         # always use draft if we have a page
         self.page = get_page_draft(self.request.current_page)
@@ -41,10 +43,8 @@ class PageTagsToolbar(CMSToolbar):
         else:
             has_global_current_page_change_permission = False
             # check if user has page edit permission
-        can_change = (
-            self.request.current_page and
-            self.request.current_page.has_change_permission(self.request.user)
-        )
+        has_change_permission = self.request.current_page.has_change_permission(self.request.user)
+        can_change = (self.request.current_page and has_change_permission)
         if has_global_current_page_change_permission or can_change:
             not_edit_mode = not self.toolbar.edit_mode
             tags_menu = self.toolbar.get_or_create_menu('page')
