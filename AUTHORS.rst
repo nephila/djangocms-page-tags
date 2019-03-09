@@ -11,3 +11,4 @@ Contributors
 ------------
 
 * Adam Chainz
+* Mark Walker

@@ -4,9 +4,9 @@
 import os
 import sys
 
-import djangocms_page_tags
-
 from setuptools import setup
+
+import djangocms_page_tags
 
 version = djangocms_page_tags.__version__
 
@@ -34,7 +34,7 @@ setup(
     include_package_data=True,
     install_requires=(
         'django-cms>=3.4',
-        'django-taggit>=0.11.2,<0.23',
+        'django-taggit>=0.11.2',
         'django-taggit-autosuggest',
         'django-classy-tags>=0.3.4.1',
     ),

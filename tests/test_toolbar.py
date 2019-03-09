@@ -7,7 +7,6 @@ from __future__ import absolute_import, print_function, unicode_literals
 from cms.toolbar.items import Menu, ModalItem, SubMenu
 from cms.utils.i18n import get_language_object
 from django.contrib.auth.models import Permission, User
-from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
 from django.utils.encoding import force_text
 
@@ -15,6 +14,11 @@ from djangocms_page_tags.cms_toolbars import PAGE_TAGS_ITEM_TITLE, PAGE_TAGS_MEN
 from djangocms_page_tags.models import PageTags, TitleTags
 
 from . import BaseTest
+
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 
 
 class ToolbarTest(BaseTest):
