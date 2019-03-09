@@ -13,6 +13,7 @@ from taggit_autosuggest.managers import TaggableManager
 from .utils import get_cache_key
 
 
+@extension_pool.register
 class PageTags(PageExtension):
     tags = TaggableManager()
 
@@ -22,9 +23,9 @@ class PageTags(PageExtension):
 
     class Meta:
         verbose_name = _('Page tags (all languages)')
-extension_pool.register(PageTags)
 
 
+@extension_pool.register
 class TitleTags(TitleExtension):
     tags = TaggableManager()
 
@@ -34,7 +35,6 @@ class TitleTags(TitleExtension):
 
     class Meta:
         verbose_name = _('Page tags (language-dependent)')
-extension_pool.register(TitleTags)
 
 
 # Cache cleanup when deleting pages / editing page extensions
