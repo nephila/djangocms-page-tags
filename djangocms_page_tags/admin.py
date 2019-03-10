@@ -8,6 +8,7 @@ from django.contrib import admin
 from .models import PageTags, TitleTags
 
 
+@admin.register(PageTags)
 class PageTagsAdmin(PageExtensionAdmin):
 
     class Media:
@@ -15,9 +16,9 @@ class PageTagsAdmin(PageExtensionAdmin):
             'all': ('%sdjangocms_page_tags/css/%s' % (
                 settings.STATIC_URL, 'djangocms_page_tags_admin.css'),)
         }
-admin.site.register(PageTags, PageTagsAdmin)
 
 
+@admin.register(TitleTags)
 class TitleTagsAdmin(TitleExtensionAdmin):
 
     class Media:
@@ -25,4 +26,3 @@ class TitleTagsAdmin(TitleExtensionAdmin):
             'all': ('%sdjangocms_page_tags/css/%s' % (
                 settings.STATIC_URL, 'djangocms_page_tags_admin.css'),)
         }
-admin.site.register(TitleTags, TitleTagsAdmin)
