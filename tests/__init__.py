@@ -4,8 +4,8 @@ Tests for `djangocms_page_tags` module.
 """
 from __future__ import absolute_import, print_function, unicode_literals
 
+from app_helper.base_test import BaseTestCase
 from django.core.cache import cache
-from djangocms_helper.base_test import BaseTestCase
 
 
 class BaseTest(BaseTestCase):

@@ -7,8 +7,12 @@ History
 0.7.0 (unreleased)
 ==================
 
+* Add Django 2.2 support
+* Add django CMS 3.7 support
+* Move to django-app-helper
 * Drop compatibility with Django < 1.11
 * Drop compatibility with Python 3 < 3.5
+* Drop compatibility with django CMS < 3.5
 
 0.6.2 (2019-03-09)
 ==================

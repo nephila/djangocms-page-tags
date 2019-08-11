@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
+from app_helper.utils import DJANGO_1_11
 from cms.utils.conf import get_cms_setting
 from django.conf import settings
 from django.conf.urls import include, url
@@ -8,7 +9,6 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
-from djangocms_helper.utils import DJANGO_1_11
 
 admin.autodiscover()
 
