@@ -1,42 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: djangocms-page-tags\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-20 07:14+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2019-08-11 22:29+0200\n"
+"PO-Revision-Date: 2017-09-19 23:18+0000\n"
+"Last-Translator: yakky <i.spalletti@nephila.it>\n"
+"Language-Team: English (http://www.transifex.com/nephila/djangocms-page-tags/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cms_toolbar.py:17
+#: cms_toolbars.py:22
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
-#: cms_toolbar.py:18
+#: cms_toolbars.py:23
 msgid "Common"
-msgstr ""
+msgstr "Common"
 
-#: models.py:23
+#: models.py:25
 msgid "Page tags (all languages)"
-msgstr ""
+msgstr "Page tags (all languages)"
 
-#: models.py:35
+#: models.py:37
 msgid "Page tags (language-dependent)"
-msgstr ""
+msgstr "Page tags (language-dependent)"
 
 #: templates/djangocms_page_tags/templatetags/page_tags.html:4
 msgid "Page tags:"
-msgstr ""
+msgstr "Page tags:"
 
 #: templates/djangocms_page_tags/templatetags/title_tags.html:4
 msgid "Title tags:"
-msgstr ""
+msgstr "Title tags:"
