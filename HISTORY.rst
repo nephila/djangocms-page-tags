@@ -4,7 +4,7 @@
 History
 *******
 
-0.7.0 (unreleased)
+0.7.0 (2019-08-22)
 ==================
 
 * Drop compatibility with Django < 1.11
