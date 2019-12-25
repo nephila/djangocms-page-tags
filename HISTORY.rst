@@ -4,6 +4,15 @@
 History
 *******
 
+0.8.0 (unreleased)
+==================
+
+* Add Django 2.2
+* Add django CMS 3.7
+* Add Python 3.7
+* Drop compatibility with django CMS < 3.6
+
+
 0.7.0 (2019-08-22)
 ==================
 
