@@ -4,7 +4,7 @@
 History
 *******
 
-0.7.1 (unreleased)
+0.8.0 (unreleased)
 ==================
 
 * Add Django 2.2

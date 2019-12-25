@@ -6,17 +6,17 @@ djangocms-page-tags
 
 Tagged pages for django CMS 3
 
-Python: 2.7, 3.5, 3.6
+Python: 2.7, 3.5, 3.6, 3.7
 
-Django: 1.11 to 2.1
+Django: 1.11 to 2.2
 
-django CMS: 3.4 to 3.6
+django CMS: 3.6 to 3.7
+
+.. warning:: Since version 0.8, the support for Python 3.4, django CMS < 3.6
+             has been dropped.
 
 .. warning:: Since version 0.7, the support for Python 3.4 and Django<1.11
              has been dropped.
-
-.. warning:: Since version 0.5, the support for Python 2.6, Python 3.3, Django<1.8 and django CMS<3.2
-             has been dropped
 
 **********
 Quickstart
@@ -32,7 +32,7 @@ Then add it to INSTALLED_APPS along with its dependencies::
     'taggit_autosuggest',
     'djangocms_page_tags',
 
-Add `taggit_autosuggest` to urlconf::
+Add ``taggit_autosuggest`` to urlconf::
 
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 

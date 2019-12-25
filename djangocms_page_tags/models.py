@@ -40,10 +40,7 @@ class TitleTags(TitleExtension):
 # Cache cleanup when deleting pages / editing page extensions
 @receiver(pre_delete, sender=Page)
 def cleanup_page(sender, instance, **kwargs):
-    try:
-        site_id = instance.node.site_id
-    except AttributeError:  # CMS_3_4
-        site_id = instance.site_id
+    site_id = instance.node.site_id
     key = get_cache_key(
         None, instance, '', site_id, False
     )
@@ -52,10 +49,7 @@ def cleanup_page(sender, instance, **kwargs):
 
 @receiver(pre_delete, sender=Title)
 def cleanup_title(sender, instance, **kwargs):
-    try:
-        site_id = instance.page.node.site_id
-    except AttributeError:  # CMS_3_4
-        site_id = instance.page.site_id
+    site_id = instance.page.node.site_id
     key = get_cache_key(
         None, instance.page, instance.language, site_id, True
     )
@@ -64,10 +58,7 @@ def cleanup_title(sender, instance, **kwargs):
 
 @receiver(post_save, sender=PageTags)
 def cleanup_pagetags(sender, instance, **kwargs):
-    try:
-        site_id = instance.extended_object.node.site_id
-    except AttributeError:  # CMS_3_4
-        site_id = instance.extended_object.site_id
+    site_id = instance.extended_object.node.site_id
     key = get_cache_key(
         None, instance.extended_object, '', site_id, False
     )
@@ -76,10 +67,7 @@ def cleanup_pagetags(sender, instance, **kwargs):
 
 @receiver(post_save, sender=TitleTags)
 def cleanup_titletags(sender, instance, **kwargs):
-    try:
-        site_id = instance.extended_object.page.node.site_id
-    except AttributeError:  # CMS_3_4
-        site_id = instance.extended_object.page.site_id
+    site_id = instance.extended_object.page.node.site_id
     key = get_cache_key(
         None, instance.extended_object.page, instance.extended_object.language,
         site_id, True
