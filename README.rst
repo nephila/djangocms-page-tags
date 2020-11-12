@@ -2,15 +2,18 @@
 djangocms-page-tags
 ===================
 
-|Gitter| |PyPiVersion| |PyVersion| |Status| |TestCoverage| |CodeClimate| |License|
+|Gitter| |PyPiVersion| |PyVersion| |GAStatus| |TestCoverage| |CodeClimate| |License|
 
 Tagged pages for django CMS 3
 
-Python: 2.7, 3.5, 3.6, 3.7
+Python: 3.6, 3.7, 3.8
 
-Django: 1.11 to 2.2
+Django: 2.2, 3.0, 3.1
 
-django CMS: 3.6 to 3.7
+django CMS: 3.7, 3.8
+
+.. warning:: Since version 0.9, the support for Python < 3.5, django CMS < 3.7
+             has been dropped.
 
 .. warning:: Since version 0.8, the support for Python 3.4, django CMS < 3.6
              has been dropped.
@@ -85,9 +88,9 @@ For further documentation see https://djangocms-page-tags.readthedocs.io/
     :target: https://pypi.python.org/pypi/djangocms-page-sitemap
     :alt: Python versions
 
-.. |Status| image:: https://img.shields.io/travis/nephila/djangocms-page-sitemap.svg?style=flat-square
-    :target: https://travis-ci.org/nephila/djangocms-page-sitemap
-    :alt: Latest Travis CI build status
+.. |GAStatus| image:: https://github.com/nephila/djangocms-redirect/workflows/Tox%20tests/badge.svg
+    :target: https://github.com/nephila/djangocms-redirect
+    :alt: Latest CI build status
 
 .. |TestCoverage| image:: https://img.shields.io/coveralls/nephila/djangocms-page-sitemap/master.svg?style=flat-square
     :target: https://coveralls.io/r/nephila/djangocms-page-sitemap?branch=master
