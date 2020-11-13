@@ -115,7 +115,8 @@ def get_page_tags_from_request(request, page_lookup, lang, site, title=False):
     :type: List
     """
     from cms.templatetags.cms_tags import _get_page_by_untyped_arg
-    from cms.utils import get_cms_setting, get_language_from_request, get_site_id
+    from cms.utils import get_language_from_request, get_site_id
+    from cms.utils.conf import get_cms_setting
     from django.core.cache import cache
 
     site_id = get_site_id(site)

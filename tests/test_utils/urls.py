@@ -1,4 +1,4 @@
-from cms.utils import get_cms_setting
+from cms.utils.conf import get_cms_setting
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
