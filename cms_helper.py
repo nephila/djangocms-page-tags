@@ -21,7 +21,7 @@ HELPER_SETTINGS = {
     "LANGUAGE_CODE": "en",
     "LANGUAGES": (
         ("en", gettext("English")),
-        ("fr_FR", gettext("French")),
+        ("fr", gettext("French")),
         ("it", gettext("Italiano")),
     ),
     "CMS_LANGUAGES": {
