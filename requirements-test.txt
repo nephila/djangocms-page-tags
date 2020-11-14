@@ -3,4 +3,4 @@ coverage<5.0
 coveralls
 mock>=1.0.1
 flake8
-djangocms-helper>=1.1
+django-app-helper>=2.2.2

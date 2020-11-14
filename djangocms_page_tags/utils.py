@@ -1,23 +1,19 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, print_function, unicode_literals
-
-
 def get_cache_key(request, page, lang, site_id, title):
     """
     Create the cache key for the current page and tag type
     """
     from cms.cache import _get_cache_key
+    from cms.models import Page
     from cms.templatetags.cms_tags import _get_page_by_untyped_arg
 
-    from cms.models import Page
     if not isinstance(page, Page):
         page = _get_page_by_untyped_arg(page, request, site_id)
     if not site_id:
         site_id = page.node.site_id
     if not title:
-        return _get_cache_key('page_tags', page, '', site_id) + '_type:tags_list'
+        return _get_cache_key("page_tags", page, "", site_id) + "_type:tags_list"
     else:
-        return _get_cache_key('title_tags', page, lang, site_id) + '_type:tags_list'
+        return _get_cache_key("title_tags", page, lang, site_id) + "_type:tags_list"
 
 
 def get_page_tags(page):
@@ -30,6 +26,7 @@ def get_page_tags(page):
     :type: List
     """
     from .models import PageTags
+
     try:
         return page.pagetags.tags.all()
     except PageTags.DoesNotExist:
@@ -48,7 +45,8 @@ def page_has_tag(page, tag):
     :type: Boolean
     """
     from .models import PageTags
-    if hasattr(tag, 'slug'):
+
+    if hasattr(tag, "slug"):
         slug = tag.slug
     else:
         slug = tag
@@ -70,6 +68,7 @@ def get_title_tags(page, lang):
     :type: List
     """
     from .models import TitleTags
+
     try:
         return page.get_title_obj(language=lang, fallback=False).titletags.tags.all()
     except TitleTags.DoesNotExist:
@@ -90,14 +89,13 @@ def title_has_tag(page, lang, tag):
     :type: Boolean
     """
     from .models import TitleTags
-    if hasattr(tag, 'slug'):
+
+    if hasattr(tag, "slug"):
         slug = tag.slug
     else:
         slug = tag
     try:
-        return page.get_title_obj(
-            language=lang, fallback=False
-        ).titletags.tags.filter(slug=slug).exists()
+        return page.get_title_obj(language=lang, fallback=False).titletags.tags.filter(slug=slug).exists()
     except TitleTags.DoesNotExist:
         return False
 
@@ -118,12 +116,8 @@ def get_page_tags_from_request(request, page_lookup, lang, site, title=False):
     """
     from cms.templatetags.cms_tags import _get_page_by_untyped_arg
     from cms.utils import get_language_from_request, get_site_id
+    from cms.utils.conf import get_cms_setting
     from django.core.cache import cache
-
-    try:
-        from cms.utils import get_cms_setting
-    except ImportError:
-        from cms.utils.conf import get_cms_setting
 
     site_id = get_site_id(site)
     if lang is None:
@@ -137,7 +131,7 @@ def get_page_tags_from_request(request, page_lookup, lang, site, title=False):
                 tags_list = get_title_tags(page, lang)
             else:
                 tags_list = get_page_tags(page)
-            cache.set(cache_key, tags_list, timeout=get_cms_setting('CACHE_DURATIONS')['content'])
+            cache.set(cache_key, tags_list, timeout=get_cms_setting("CACHE_DURATIONS")["content"])
     if not tags_list:
         tags_list = ()
     return tags_list
