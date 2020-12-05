@@ -4,10 +4,16 @@
 History
 *******
 
-Unreleased
+.. towncrier release notes start
+
+0.9.0 (2020-12-05)
 ==================
 
-* Nothing yet
+Features
+--------
+
+- Add support for Python 3.9 (#29)
+- migrate from travis, drop Python 2/Django Cms 3.6 support (#10210)
 
 0.8.0 (2019-12-27)
 ==================

@@ -8,7 +8,7 @@ target-version = ["py36"]
 include = 'djangocms_page_tags/*py'
 
 [tool.towncrier]
-package = "djangocms-page-tags"
+package = "djangocms_page_tags"
 directory = "changes"
 filename = "HISTORY.rst"
 title_format = "{version} ({project_date})"
