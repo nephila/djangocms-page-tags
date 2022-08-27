@@ -44,6 +44,24 @@ class ToolbarTest(BaseTest):
             tags_menu = page_menu[0].item.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
             self.assertEqual(tags_menu, [])
 
+    def test_page_types(self):
+        """
+        Test that page meta menu is not displayed on page types.
+        """
+        from cms.toolbar.toolbar import CMSToolbar
+
+        page1, page2 = self.get_pages()
+        page1.is_page_type = True
+        page1.save()
+        self.user_staff.user_permissions.add(Permission.objects.get(codename="change_page"))
+        self.user_staff = User.objects.get(pk=self.user_staff.pk)
+        request = self.get_page_request(page1, self.user_staff, "/", edit=True)
+        toolbar = CMSToolbar(request)
+        toolbar.get_left_items()
+        page_menu = toolbar.find_items(Menu, name="Page")[0].item
+        page_items = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
+        self.assertEqual(len(page_items), 0)
+
     def test_perm(self):
         """
         Test that page tags menu is present if user has Page.change_perm
