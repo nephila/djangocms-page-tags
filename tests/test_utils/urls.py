@@ -10,7 +10,7 @@ admin.autodiscover()
 
 urlpatterns = [
     path("taggit_autosuggest", include("taggit_autosuggest.urls")),
-    path("media/<str:path>$", serve, {"document_root": settings.MEDIA_ROOT, "show_indexes": True}),
+    path("media/<str:path>", serve, {"document_root": settings.MEDIA_ROOT, "show_indexes": True}),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
@@ -19,4 +19,3 @@ urlpatterns += i18n_patterns(
     path("admin", admin.site.urls),
     path("", include("cms.urls")),
 )
-

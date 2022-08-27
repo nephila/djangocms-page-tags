@@ -4,7 +4,7 @@ from cms.models import Page, Title
 from django.core.cache import cache
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from taggit_autosuggest.managers import TaggableManager
 
 from .utils import get_cache_key
@@ -15,8 +15,8 @@ class PageTags(PageExtension):
     tags = TaggableManager()
 
     def copy_relations(self, oldinstance, language):
-        """ Needed to copy tags when publishing page """
-        self.tags.set(*oldinstance.tags.all())
+        """Copy relation data on page publishc."""
+        self.tags.set(oldinstance.tags.all())
 
     class Meta:
         verbose_name = _("Page tags (all languages)")
@@ -27,8 +27,8 @@ class TitleTags(TitleExtension):
     tags = TaggableManager()
 
     def copy_relations(self, oldinstance, language):
-        """ Needed to copy tags when publishing page """
-        self.tags.set(*oldinstance.tags.all())
+        """Copy relation data on page publish."""
+        self.tags.set(oldinstance.tags.all())
 
     class Meta:
         verbose_name = _("Page tags (language-dependent)")
