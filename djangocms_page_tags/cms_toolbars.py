@@ -7,7 +7,7 @@ from cms.utils.conf import get_cms_setting
 from cms.utils.i18n import get_language_list, get_language_object
 from cms.utils.permissions import has_page_permission
 from django.urls import NoReverseMatch, reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from .models import PageTags, TitleTags
 
