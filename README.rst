@@ -10,7 +10,7 @@ Python: 3.7, 3.8, 3.9, 3.10
 
 Django: 2.2, 3.2
 
-django CMS: 3.7 - 3.11
+django CMS: 3.7 - 3.10
 
 **********
 Quickstart
@@ -22,20 +22,15 @@ Install djangocms-page-tags::
 
 Then add it to INSTALLED_APPS along with its dependencies::
 
-    'taggit',
-    'taggit_autosuggest',
-    'djangocms_page_tags',
+    "taggit",
+    "taggit_autosuggest",
+    "djangocms_page_tags",
 
 Add ``taggit_autosuggest`` to urlconf::
 
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+        path("taggit_autosuggest", include("taggit_autosuggest.urls")),
 
-
-Execute migration or syncdb::
-
-    $ python manage.py syncdb
-
-or::
+Execute migration::
 
     $ python manage.py migrate
 

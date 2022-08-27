@@ -12,20 +12,15 @@ Installation
 
 #. Then add it to INSTALLED_APPS along with its dependencies::
 
-        'taggit',
-        'taggit_autosuggest',
-        'djangocms_page_tags',
+        "taggit",
+        "taggit_autosuggest",
+        "djangocms_page_tags",
 
 #. Add `taggit_autosuggest` to urlconf::
 
-        url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+        path("taggit_autosuggest", include("taggit_autosuggest.urls")),
 
-
-#. Synchronize the database with syncdb::
-
-        $ python manage.py syncdb
-
-   or migrate::
+#. Synchronize the database with migrate::
 
         $ python manage.py migrate
 
