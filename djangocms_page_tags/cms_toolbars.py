@@ -26,6 +26,9 @@ class PageTagsToolbar(CMSToolbar):
         if not self.page:
             # Nothing to do
             return
+        if self.page.is_page_type:
+            # we don't need this on page types
+            return
 
         # check global permissions if CMS_PERMISSIONS is active
         if get_cms_setting("PERMISSION"):
