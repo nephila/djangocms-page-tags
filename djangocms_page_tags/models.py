@@ -15,7 +15,7 @@ class PageTags(PageExtension):
     tags = TaggableManager()
 
     def copy_relations(self, oldinstance, language):
-        """ Needed to copy tags when publishing page """
+        """Needed to copy tags when publishing page"""
         self.tags.set(*oldinstance.tags.all())
 
     class Meta:
@@ -27,7 +27,7 @@ class TitleTags(TitleExtension):
     tags = TaggableManager()
 
     def copy_relations(self, oldinstance, language):
-        """ Needed to copy tags when publishing page """
+        """Needed to copy tags when publishing page"""
         self.tags.set(*oldinstance.tags.all())
 
     class Meta:
