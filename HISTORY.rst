@@ -6,6 +6,16 @@ History
 
 .. towncrier release notes start
 
+1.0.0 (2022-08-27)
+==================
+
+Bugfixes
+--------
+
+- Add support for Django 3.2 / django CMS 3.10 (#33)
+- Skip creating toolbar item in page types (#36)
+
+
 0.9.0 (2020-12-05)
 ==================
 
