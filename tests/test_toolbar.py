@@ -6,7 +6,7 @@ from cms.utils.i18n import get_language_object
 from django.contrib.auth.models import Permission, User
 from django.test.utils import override_settings
 from django.urls import reverse
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from djangocms_page_tags.cms_toolbars import PAGE_TAGS_ITEM_TITLE, PAGE_TAGS_MENU_TITLE
 from djangocms_page_tags.models import PageTags, TitleTags
@@ -41,7 +41,7 @@ class ToolbarTest(BaseTest):
         try:
             self.assertEqual(page_menu, [])
         except AssertionError:
-            tags_menu = page_menu[0].item.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
+            tags_menu = page_menu[0].item.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))
             self.assertEqual(tags_menu, [])
 
     def test_page_types(self):
@@ -59,7 +59,7 @@ class ToolbarTest(BaseTest):
         toolbar = CMSToolbar(request)
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name="Page")[0].item
-        page_items = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
+        page_items = page_menu.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))
         self.assertEqual(len(page_items), 0)
 
     def test_perm(self):
@@ -75,9 +75,9 @@ class ToolbarTest(BaseTest):
         toolbar = CMSToolbar(request)
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name="Page")[0].item
-        tags_menu = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))[0].item
+        tags_menu = page_menu.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))[0].item
         self.assertEqual(
-            len(tags_menu.find_items(ModalItem, name="{}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1
+            len(tags_menu.find_items(ModalItem, name="{}...".format(force_str(PAGE_TAGS_ITEM_TITLE)))), 1
         )
 
     @override_settings(CMS_PERMISSION=True)
@@ -97,7 +97,7 @@ class ToolbarTest(BaseTest):
         try:
             self.assertEqual(page_menu, [])
         except AssertionError:
-            tags_menu = page_menu[0].item.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))
+            tags_menu = page_menu[0].item.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))
             self.assertEqual(tags_menu, [])
 
     def test_toolbar(self):
@@ -130,9 +130,9 @@ class ToolbarTest(BaseTest):
             toolbar = CMSToolbar(request)
             toolbar.get_left_items()
             page_menu = toolbar.find_items(Menu, name="Page")[0].item
-            tags_menu = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))[0].item
+            tags_menu = page_menu.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))[0].item
             self.assertEqual(
-                len(tags_menu.find_items(ModalItem, name="{}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))), 1
+                len(tags_menu.find_items(ModalItem, name="{}...".format(force_str(PAGE_TAGS_ITEM_TITLE)))), 1
             )
             self.assertEqual(len(tags_menu.find_items(ModalItem)), len(NEW_CMS_LANGS[1]) + 1)
 
@@ -149,8 +149,8 @@ class ToolbarTest(BaseTest):
         toolbar = CMSToolbar(request)
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name="Page")[0].item
-        tags_menu = page_menu.find_items(SubMenu, name=force_text(PAGE_TAGS_MENU_TITLE))[0].item
-        pagetags_menu = tags_menu.find_items(ModalItem, name="{}...".format(force_text(PAGE_TAGS_ITEM_TITLE)))
+        tags_menu = page_menu.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))[0].item
+        pagetags_menu = tags_menu.find_items(ModalItem, name="{}...".format(force_str(PAGE_TAGS_ITEM_TITLE)))
         self.assertEqual(len(pagetags_menu), 1)
         self.assertEqual(len(pagetags_menu), 1)
         self.assertTrue(
