@@ -76,9 +76,7 @@ class ToolbarTest(BaseTest):
         toolbar.get_left_items()
         page_menu = toolbar.find_items(Menu, name="Page")[0].item
         tags_menu = page_menu.find_items(SubMenu, name=force_str(PAGE_TAGS_MENU_TITLE))[0].item
-        self.assertEqual(
-            len(tags_menu.find_items(ModalItem, name="{}...".format(force_str(PAGE_TAGS_ITEM_TITLE)))), 1
-        )
+        self.assertEqual(len(tags_menu.find_items(ModalItem, name="{}...".format(force_str(PAGE_TAGS_ITEM_TITLE)))), 1)
 
     @override_settings(CMS_PERMISSION=True)
     def test_perm_permissions(self):
