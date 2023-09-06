@@ -7,4 +7,3 @@ source_file            = djangocms_page_tags/locale/en/LC_MESSAGES/django.po
 source_lang            = en
 replace_edited_strings = false
 keep_translations      = false
-
