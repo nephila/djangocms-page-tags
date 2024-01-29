@@ -1,6 +1,7 @@
 """
 Tests for `djangocms_page_tags` module.
 """
+
 from django.core.cache import cache
 from djangocms_helper.base_test import BaseTestCase
 

@@ -1,6 +1,7 @@
 """
 Tests for `djangocms_page_tags` modules module.
 """
+
 from cms.toolbar.items import Menu, ModalItem, SubMenu
 from cms.utils.i18n import get_language_object
 from django.contrib.auth.models import Permission, User
