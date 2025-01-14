@@ -6,11 +6,11 @@ djangocms-page-tags
 
 Tagged pages for django CMS 3
 
-Python: 3.7, 3.8, 3.9, 3.10
+Python: 3.10, 3.11
 
-Django: 2.2, 3.2
+Django: 4.2
 
-django CMS: 3.7 - 3.10
+django CMS: 3.11
 
 **********
 Quickstart
