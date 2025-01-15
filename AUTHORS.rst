@@ -12,4 +12,5 @@ Contributors
 
 * Adam Chainz
 * Mark Walker
-* Serge Fedoruk
+* Serge Fedoruk <s.fedoruk@nephila.digital>
+* Leonardo Cavallucci <l.cavallucci@nephila.digital>
