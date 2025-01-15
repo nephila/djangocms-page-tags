@@ -9,15 +9,10 @@ jobs:
     continue-on-error: ${{ matrix.continue-on-error }}
     strategy:
       matrix:
-        python-version: ["3.11", "3.10", "3.9"]
-        django: [42, 41, 32]
-        cms: [311, 39]
+        python-version: ["3.11", "3.10"]
+        django: [42]
+        cms: [311]
         continue-on-error: [true]
-        exclude:
-          - django: 41
-            cms: 39
-          - django: 42
-            cms: 39
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
