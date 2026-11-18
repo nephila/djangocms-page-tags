@@ -1,5 +1,5 @@
 -e .[docs]
-coverage>5,<7.0
+coverage>5,<8.0
 coveralls>2
 mock>=1.0.1
 django-app-helper>=2.0.0
